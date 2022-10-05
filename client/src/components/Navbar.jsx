@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi';
+import { shopAllLinks, bundleSaveAllLinks } from '../data/links';
 
 const Navbar = () => {
   const [isSearch, setIsSearch] = useState(false);
@@ -8,18 +9,18 @@ const Navbar = () => {
   return (
     <>
       <div className='form-control m-3 sm:hidden'>
-          <div className='flex justify-center '>
-            <input
-              type='text'
-              placeholder='Search'
-              className='input input-xs input-bordered'
-            />
-          </div>
+        <div className='flex justify-center '>
+          <input
+            type='text'
+            placeholder='Search'
+            className='input input-xs input-bordered'
+          />
+        </div>
       </div>
       <div className='navbar bg-base-100'>
         <div className='navbar-start'>
           <div className='dropdown'>
-            <label tabIndex={0} className='btn btn-ghost lg:hidden'>
+            <label tabIndex={0} className='btn btn-ghost md:hidden'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 className='h-5 w-5'
@@ -37,109 +38,60 @@ const Navbar = () => {
             <ul
               tabIndex={0}
               className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'>
- <li tabIndex={0}>
-              <Link to='/shopall'>
-                Shop All
-                <svg
-                  className='fill-current'
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='20'
-                  height='20'
-                  viewBox='0 0 24 24'>
-                  <path d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' />
-                </svg>
-              </Link>
-              <ul className='p-2'>
-                <li>
-                  <Link to='/feature'>Featured</Link>
-                </li>
-                <li>
-                  <Link to='/newarrivals'>New Arrivals</Link>
-                </li>
-                <li>
-                  <Link to='/freeexclusive'>Package Free Exclusives</Link>
-                </li>
-                <li>
-                  <Link to='/'>Household</Link>
-                </li>
-                <li>
-                  <Link to='/beautybody'>Beauty & Body</Link>
-                </li>
-                <li>
-                  <Link to='/family'>Family & Kids</Link>
-                </li>
-                <li>
-                  <Link to='/pet'>Pet</Link>
-                </li>
-                <li>
-                  <Link to='/clothing'>Clothing & Accessories</Link>
-                </li>
-                <li>
-                  <Link to='/bundlesave'>Bundle & Save</Link>
-                </li>
-                <li>
-                  <Link to='/bybrand'>Shop By Brand</Link>
-                </li>
-                <li>
-                  <Link to='/clearance'>CLEARANCE</Link>
-                </li>
-                <li>
-                  <Link to='/shopall'>Shop All</Link>
-                </li>
-                <li>
-                  <Link to='/login'>Login</Link>
-                </li>
-              </ul>
-            </li>
-            <li tabIndex={0}>
-              <Link to='/bundlesave'>
-                Bundle & Save
-                <svg
-                  className='fill-current'
-                  xmlns='http://www.w3.org/2000/svg'
-                  width='20'
-                  height='20'
-                  viewBox='0 0 24 24'>
-                  <path d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' />
-                </svg>
-              </Link>
-              <ul className='p-2'>
-                <li>
-                  <Link to='/aboutus'>About Us</Link>
-                </li>
-                <li>
-                  <Link to='/ourimpact'>Our Impact</Link>
-                </li>
-                <li>
-                  <Link to='/principles'>Our Guiding Principles</Link>
-                </li>
-                <li>
-                  <Link to='/howweship'>How We Ship</Link>
-                </li>
-                <li>
-                  <Link to='/livemore'>Steps To Start Living More</Link>
-                </li>
-                <li>
-                  <Link to='/sustainably'>Sustainably</Link>
-                </li>
-                <li>
-                  <Link to='/contactus'>Contact Us</Link>
-                </li>
-                <li>
-                  <Link to='/login'>Login</Link>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <Link to='/aboutus'>About Us</Link>
-            </li>
+              <li tabIndex={0}>
+                <Link to='/shopall'>
+                  Shop All
+                  <svg
+                    className='fill-current'
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='20'
+                    height='20'
+                    viewBox='0 0 24 24'>
+                    <path d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' />
+                  </svg>
+                </Link>
 
-            <li>
-              <Link to='/rewards'>Rewards</Link>
-            </li>
-            <li>
-              <Link to='/login'>Login</Link>
-            </li>
+                {/* MOBILE NESTED DROPDOWN */}
+                <ul className='p-2 invisible sm:visible'>
+                  {shopAllLinks.map((item, idx) => (
+                    <li key={idx}>
+                      <Link to={item.route}>{item.text}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+              <li tabIndex={0}>
+                <Link to='/bundlesave'>
+                  Bundle & Save
+                  <svg
+                    className='fill-current'
+                    xmlns='http://www.w3.org/2000/svg'
+                    width='20'
+                    height='20'
+                    viewBox='0 0 24 24'>
+                    <path d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' />
+                  </svg>
+                </Link>
+                
+                {/* MOBILE NESTED DROPDOWN */}
+                <ul className='p-2 invisible sm:visible'>
+                  {bundleSaveAllLinks.map((item, idx) => (
+                    <li key={idx}>
+                      <Link to={item.route}>{item.text}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+              <li>
+                <Link to='/aboutus'>About Us</Link>
+              </li>
+
+              <li>
+                <Link to='/rewards'>Rewards</Link>
+              </li>
+              <li>
+                <Link to='/login'>Login</Link>
+              </li>
             </ul>
           </div>
           <Link
@@ -149,6 +101,8 @@ const Navbar = () => {
           </Link>
         </div>
         <div className='navbar-center hidden md:flex'>
+
+          {/* DESKTOP  */}
           <ul className='menu menu-horizontal p-0'>
             <li tabIndex={0}>
               <Link to='/shopall'>
@@ -162,46 +116,13 @@ const Navbar = () => {
                   <path d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' />
                 </svg>
               </Link>
+              {/* DESKTOP NESTED DROPDOWN */}
               <ul className='p-2'>
-                <li>
-                  <Link to='/feature'>Featured</Link>
-                </li>
-                <li>
-                  <Link to='/newarrivals'>New Arrivals</Link>
-                </li>
-                <li>
-                  <Link to='/freeexclusive'>Package Free Exclusives</Link>
-                </li>
-                <li>
-                  <Link to='/'>Household</Link>
-                </li>
-                <li>
-                  <Link to='/beautybody'>Beauty & Body</Link>
-                </li>
-                <li>
-                  <Link to='/family'>Family & Kids</Link>
-                </li>
-                <li>
-                  <Link to='/pet'>Pet</Link>
-                </li>
-                <li>
-                  <Link to='/clothing'>Clothing & Accessories</Link>
-                </li>
-                <li>
-                  <Link to='/bundlesave'>Bundle & Save</Link>
-                </li>
-                <li>
-                  <Link to='/bybrand'>Shop By Brand</Link>
-                </li>
-                <li>
-                  <Link to='/clearance'>CLEARANCE</Link>
-                </li>
-                <li>
-                  <Link to='/shopall'>Shop All</Link>
-                </li>
-                <li>
-                  <Link to='/login'>Login</Link>
-                </li>
+                {shopAllLinks.map((item, idx) => (
+                  <li key={idx}>
+                    <Link to={item.route}>{item.text}</Link>
+                  </li>
+                ))}
               </ul>
             </li>
             <li tabIndex={0}>
@@ -216,31 +137,14 @@ const Navbar = () => {
                   <path d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' />
                 </svg>
               </Link>
+
+              {/* DESKTOP NESTED DROPDOWN */}
               <ul className='p-2'>
-                <li>
-                  <Link to='/aboutus'>About Us</Link>
-                </li>
-                <li>
-                  <Link to='/ourimpact'>Our Impact</Link>
-                </li>
-                <li>
-                  <Link to='/principles'>Our Guiding Principles</Link>
-                </li>
-                <li>
-                  <Link to='/howweship'>How We Ship</Link>
-                </li>
-                <li>
-                  <Link to='/livemore'>Steps To Start Living More</Link>
-                </li>
-                <li>
-                  <Link to='/sustainably'>Sustainably</Link>
-                </li>
-                <li>
-                  <Link to='/contactus'>Contact Us</Link>
-                </li>
-                <li>
-                  <Link to='/login'>Login</Link>
-                </li>
+                {bundleSaveAllLinks.map((item, idx) => (
+                  <li key={idx}>
+                    <Link to={item.route}>{item.text}</Link>
+                  </li>
+                ))}
               </ul>
             </li>
             <li>
@@ -255,6 +159,8 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
+
+        {/* SHOPPING CART AND SEARCH */}
         <div className='navbar-end'>
           <div className='flex flex-row justify-center'>
             <div className='hidden sm:form-control sm:mt-3'>
