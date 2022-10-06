@@ -1,11 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi';
 import { shopAllLinks, bundleSaveAllLinks } from '../data/links';
 
 const Navbar = () => {
   const [isSearch, setIsSearch] = useState(false);
-
+  const textRef=useRef()
+const onChange =(e)=>{
+//use context api here later ex: ItLogger--from actions searchLogs(textRef.current.value)
+console.log(textRef.current.value)
+}
   return (
     <>
       <div className='form-control m-3 sm:hidden'>
@@ -72,7 +76,7 @@ const Navbar = () => {
                     <path d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' />
                   </svg>
                 </Link>
-                
+
                 {/* MOBILE NESTED DROPDOWN */}
                 <ul className='p-2 invisible sm:visible'>
                   {bundleSaveAllLinks.map((item, idx) => (
@@ -101,7 +105,6 @@ const Navbar = () => {
           </Link>
         </div>
         <div className='navbar-center hidden md:flex'>
-
           {/* DESKTOP  */}
           <ul className='menu menu-horizontal p-0'>
             <li tabIndex={0}>
@@ -167,9 +170,13 @@ const Navbar = () => {
               {isSearch ? (
                 <div className='flex justify-center z-10'>
                   <input
-                    type='text'
-                    placeholder='Search'
                     className='input input-xs input-bordered'
+                    // type='text'
+                    type='search'
+                    id='search'
+                    placeholder='Search...'
+                    ref={textRef}
+                    onChange={onChange}
                   />
                   <button
                     className='btn btn-xs btn-square mx-1'
