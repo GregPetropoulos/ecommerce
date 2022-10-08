@@ -1,17 +1,13 @@
-import React, { useState, useRef } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiSearch } from 'react-icons/fi';
 import { shopAllLinks, bundleSaveAllLinks } from '../data/links';
+import Header  from './Header';
+import SearchBar from './SearchBar';
 
 const Navbar = () => {
-  const [isSearch, setIsSearch] = useState(false);
-  const textRef=useRef()
-const onChange =(e)=>{
-//use context api here later ex: ItLogger--from actions searchLogs(textRef.current.value)
-console.log(textRef.current.value)
-}
   return (
     <>
+    <Header/>
       <div className='form-control m-3 sm:hidden'>
         <div className='flex justify-center '>
           <input
@@ -167,7 +163,8 @@ console.log(textRef.current.value)
         <div className='navbar-end'>
           <div className='flex flex-row justify-center'>
             <div className='hidden sm:form-control sm:mt-3'>
-              {isSearch ? (
+              <SearchBar />
+              {/* {isSearch ? (
                 <div className='flex justify-center z-10'>
                   <input
                     className='input input-xs input-bordered'
@@ -186,7 +183,7 @@ console.log(textRef.current.value)
                 </div>
               ) : (
                 <FiSearch onClick={() => setIsSearch(!isSearch)} />
-              )}
+              )} */}
             </div>
             <div className='dropdown dropdown-end'>
               <label tabIndex={0} className='btn btn-ghost btn-circle'>

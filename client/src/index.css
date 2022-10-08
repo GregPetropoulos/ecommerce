@@ -24,3 +24,76 @@
 } */
 /* *------------------- */
 /* *---------------------- */
+
+/* ANIMATION FOR TEXT IN HEADER IN TOP OF NAVBAR */
+/* color, font, text, 100% width, etc. */
+@layer base {
+  .deal-container {
+    /* background-color: #0f2c3e; */
+    @apply text-inherit;
+    @apply bg-inherit;
+    @apply flex w-full self-center relative;
+    @apply font-sans text-base text-center;
+  }
+  /* position: relative is required to keep spans with position: absolute inside .subheading */
+  /* make each span width 100% of .deal-container width */
+  .deal-container span {
+    @apply w-full px-2;
+  }
+  /* this is needed to justify spans because they're being positioned absolutely */
+  .deal-container {
+    @apply justify-center;
+  }
+  /* overlap each .weekly-text-deal one over the other so that each word fades in and out in its place and without displacing other spans */
+  .deal-container .weekly-text-deal:nth-child(-n + 3) {
+    position: absolute;
+    /* left: 50; */
+  }
+  /* hide the first 3 weekly-text-deal */
+  .deal-container .weekly-text-deal:nth-child(-n + 3):nth-child(-n + 2) {
+    opacity: 0;
+  }
+
+  /* Use opacity to achieve the fade-in/out effect. */
+  @keyframes changeText {
+    0% {
+      opacity: 1;
+    }
+    25% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 0;
+    }
+    75% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* Animate every .weekly-text-deal every 8s infinitely */
+  .weekly-text-deal {
+    animation: changeText 7s cubic-bezier(1, -0.2, 1, -0.2) infinite;
+  }
+  /* This is the "Enjoy Free Shipping On $200 Or More" span and is the 1st to be animated after a 1 second delay */
+  .deal-container .weekly-text-deal:nth-child(3) {
+    animation-delay: 2s;
+    animation-timing-function: cubic-bezier(0.1, 0.7, 1, 1);
+  }
+  /* This is the "Summer Blowout" span and is the 2nd to be animated after a 3 seconds delay */
+  .deal-container .weekly-text-deal:nth-child(2) {
+    animation-delay: 4s;
+    /* animation-timing-function: cubic-bezier(0.1, 0.7, 1, 1); */
+    /* animation-timing-function:cubic-bezier(0,1.07,1,-0.56) */
+    animation-timing-function: ease-in;
+  }
+  /* This is the "Treats For Cheaps" span and is the 3rd to be animated after a 5 seconds delay */
+  .deal-container .weekly-text-deal:nth-child(1) {
+    animation-delay: 6s;
+    animation-timing-function:cubic-bezier(0,1.07,1,-0.56);
+
+  }
+
+}
