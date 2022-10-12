@@ -3,21 +3,26 @@ import { Link } from 'react-router-dom';
 import { shopAllLinks, bundleSaveAllLinks } from '../data/links';
 import Header  from './Header';
 import SearchBar from './SearchBar';
+import Search from './Search'
 
 const Navbar = () => {
+
+
   return (
-    <>
-    <Header/>
-      <div className='form-control m-3 sm:hidden'>
-        <div className='flex justify-center '>
+<div className='flex flex-col'>
+    {/* <Header/> */}
+    <Search/>
+
+      {/* <div className='form-control bg-transparent fixed sm:hidden  '>
+        <div className='flex justify-center pt-3 bg-transparent'>
           <input
             type='text'
             placeholder='Search'
             className='input input-xs input-bordered'
           />
         </div>
-      </div>
-      <div className='navbar bg-base-100'>
+      </div> */}
+      <div className='navbar bg-transparent z-10 fixed text-primary-content'>
         <div className='navbar-start'>
           <div className='dropdown'>
             <label tabIndex={0} className='btn btn-ghost md:hidden'>
@@ -221,7 +226,8 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </>
+</div>
+
   );
 };
 
