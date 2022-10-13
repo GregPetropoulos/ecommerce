@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { shopAllLinks, bundleSaveAllLinks } from '../data/links';
-import Header  from './Header';
+import { FiSettings } from 'react-icons/fi';
+
+import Header from './Header';
 import SearchBar from './SearchBar';
-import Search from './Search'
+import Search from './Search';
 
 const Navbar = () => {
-
-
   return (
-<div className='flex flex-col'>
-    {/* <Header/> */}
-    <Search/>
+    <div className='flex flex-col'>
+      {/* <Header/> */}
+      <Search />
 
       {/* <div className='form-control bg-transparent fixed sm:hidden  '>
         <div className='flex justify-center pt-3 bg-transparent'>
@@ -22,7 +22,7 @@ const Navbar = () => {
           />
         </div>
       </div> */}
-      <div className='navbar bg-transparent z-10 fixed text-primary-content'>
+      <div className='navbar bg-transparent z-10 fixed text-primary'>
         <div className='navbar-start'>
           <div className='dropdown'>
             <label tabIndex={0} className='btn btn-ghost md:hidden'>
@@ -44,8 +44,8 @@ const Navbar = () => {
               tabIndex={0}
               className='menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52'>
               <li tabIndex={0}>
-                <Link to='/shopall'>
-                  Shop All
+                <Link to='/women' className='font-bold'>
+                  WOMEN
                   <svg
                     className='fill-current'
                     xmlns='http://www.w3.org/2000/svg'
@@ -66,8 +66,8 @@ const Navbar = () => {
                 </ul>
               </li>
               <li tabIndex={0}>
-                <Link to='/bundlesave'>
-                  Bundle & Save
+                <Link to='/men' className='font-bold'>
+                  MEN
                   <svg
                     className='fill-current'
                     xmlns='http://www.w3.org/2000/svg'
@@ -88,29 +88,35 @@ const Navbar = () => {
                 </ul>
               </li>
               <li>
-                <Link to='/aboutus'>About Us</Link>
+                <Link to='/gear' className='font-bold'>
+                  GEAR
+                </Link>
               </li>
 
               <li>
-                <Link to='/rewards'>Rewards</Link>
+                <Link to='/sale' className='font-bold'>
+                  SALE
+                </Link>
               </li>
               <li>
-                <Link to='/login'>Login</Link>
+                <Link to='/aboutus' className='font-bold'>
+                  ABOUT US
+                </Link>
               </li>
             </ul>
           </div>
           <Link
             to='/'
-            className='btn btn-xs btn-ghost normal-case text-sm  sm:text-xl'>
-            HouseGoods
+            className='btn btn-ghost normal-case font-bold text-lg tracking-widest text-neutral'>
+            Moda
           </Link>
         </div>
         <div className='navbar-center hidden md:flex'>
           {/* DESKTOP  */}
           <ul className='menu menu-horizontal p-0'>
             <li tabIndex={0}>
-              <Link to='/shopall'>
-                Shop All
+              <Link to='/women' className='font-bold'>
+                WOMEN
                 <svg
                   className='fill-current'
                   xmlns='http://www.w3.org/2000/svg'
@@ -130,8 +136,8 @@ const Navbar = () => {
               </ul>
             </li>
             <li tabIndex={0}>
-              <Link to='/bundlesave'>
-                Bundle & Save
+              <Link to='/men' className='font-bold'>
+                MEN
                 <svg
                   className='fill-current'
                   xmlns='http://www.w3.org/2000/svg'
@@ -152,46 +158,34 @@ const Navbar = () => {
               </ul>
             </li>
             <li>
-              <Link to='/aboutus'>About Us</Link>
+              <Link to='/gear' className='font-bold'>
+                GEAR
+              </Link>
             </li>
 
             <li>
-              <Link to='/rewards'>Rewards</Link>
+              <Link to='/sale' className='font-bold'>
+                SALE
+              </Link>
             </li>
             <li>
-              <Link to='/login'>Login</Link>
+              <Link to='/aboutus' className='font-bold'>
+                ABOUT US
+              </Link>
             </li>
           </ul>
         </div>
 
         {/* SHOPPING CART AND SEARCH */}
         <div className='navbar-end'>
-          <div className='flex flex-row justify-center'>
-            <div className='hidden sm:form-control sm:mt-3'>
+          <div className='flex flex-row justify-center '>
+            <div className='hidden sm:form-control sm:flex sm:justify-center sm:w-full sm:m-3'>
               <SearchBar />
-              {/* {isSearch ? (
-                <div className='flex justify-center z-10'>
-                  <input
-                    className='input input-xs input-bordered'
-                    // type='text'
-                    type='search'
-                    id='search'
-                    placeholder='Search...'
-                    ref={textRef}
-                    onChange={onChange}
-                  />
-                  <button
-                    className='btn btn-xs btn-square mx-1'
-                    onClick={() => setIsSearch(!isSearch)}>
-                    X
-                  </button>
-                </div>
-              ) : (
-                <FiSearch onClick={() => setIsSearch(!isSearch)} />
-              )} */}
             </div>
-            <div className='dropdown dropdown-end'>
-              <label tabIndex={0} className='btn btn-ghost btn-circle'>
+            <div className='dropdown dropdown-end pr-4 '>
+              <label
+                tabIndex={0}
+                className='btn btn-xs  btn-ghost btn-circle sm:btn-md'>
                 <div className='indicator'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
@@ -211,7 +205,7 @@ const Navbar = () => {
               </label>
               <div
                 tabIndex={0}
-                className='mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow'>
+                className='mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow '>
                 <div className='card-body'>
                   <span className='font-bold text-lg'>8 Items</span>
                   <span className='text-info'>Subtotal: $999</span>
@@ -224,10 +218,12 @@ const Navbar = () => {
               </div>
             </div>
           </div>
+          <div className='border-l-2 pl-4'>
+            <FiSettings size={16} />
+          </div>
         </div>
       </div>
-</div>
-
+    </div>
   );
 };
 

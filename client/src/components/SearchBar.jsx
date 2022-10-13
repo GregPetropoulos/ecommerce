@@ -16,11 +16,11 @@ const SearchBar = () => {
       {isSearch ? (
         <div className='flex justify-center z-10'>
           <input
-            className='input input-xs input-bordered'
+            className='input input-xs input-bordered text-neutral-content'
             // type='text'
             type='search'
             id='search'
-            placeholder='Search...'
+            placeholder='Search entire store...'
             ref={textRef}
             onChange={onChange}
           />
