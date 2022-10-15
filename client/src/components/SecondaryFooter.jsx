@@ -2,6 +2,7 @@ import React from 'react'
 
 const SecondaryFooter = () => {
   return (
+    <>
     <div className='flex justify-evenly align-middle'>
 
         <div>FREE SHIPPING</div>
@@ -9,6 +10,10 @@ const SecondaryFooter = () => {
         <div>PREMIUM SUPPORT</div>
         <div>BLACK FRIDAY</div>
     </div>
+<div className="divider"></div>
+    <hr />
+    </>
+
   )
 }
 

@@ -1,28 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { shopAllLinks, bundleSaveAllLinks } from '../data/links';
-import { FiSettings } from 'react-icons/fi';
+import Settings from './Setting';
+import SearchBar from './SearchBar';
 
 import Header from './Header';
-import SearchBar from './SearchBar';
-import Search from './Search';
 
 const Navbar = () => {
   return (
     <div className='flex flex-col'>
       {/* <Header/> */}
-      <Search />
-
-      {/* <div className='form-control bg-transparent fixed sm:hidden  '>
-        <div className='flex justify-center pt-3 bg-transparent'>
-          <input
-            type='text'
-            placeholder='Search'
-            className='input input-xs input-bordered'
-          />
-        </div>
-      </div> */}
-      <div className='navbar bg-transparent z-10 fixed text-primary'>
+      {/* <div className='navbar bg-transparent z-10 fixed text-primary'> */}
+      <div className='navbar bg-transparent text-primary'>
         <div className='navbar-start'>
           <div className='dropdown'>
             <label tabIndex={0} className='btn btn-ghost md:hidden'>
@@ -107,7 +96,7 @@ const Navbar = () => {
           </div>
           <Link
             to='/'
-            className='btn btn-ghost normal-case font-bold text-lg tracking-widest text-neutral'>
+            className='btn btn-ghost normal-case font-bold text-lg tracking-widest text-danger'>
             Moda
           </Link>
         </div>
@@ -178,11 +167,14 @@ const Navbar = () => {
 
         {/* SHOPPING CART AND SEARCH */}
         <div className='navbar-end'>
-          <div className='flex flex-row justify-center '>
-            <div className='hidden sm:form-control sm:flex sm:justify-center sm:w-full sm:m-3'>
-              <SearchBar />
-            </div>
-            <div className='dropdown dropdown-end pr-4 '>
+          <div className=' flex justify-center border-l-2 px-2 text-xsm'>
+            <SearchBar />
+          </div>
+          <div className='flex flex-row justify-evenly align-middle'>
+            {/* <SearchBar /> */}
+            {/* <div className='form-control flex justify-center w-full m-3'>
+            </div> */}
+            <div className='dropdown dropdown-end '>
               <label
                 tabIndex={0}
                 className='btn btn-xs  btn-ghost btn-circle sm:btn-md'>
@@ -200,7 +192,9 @@ const Navbar = () => {
                       d='M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z'
                     />
                   </svg>
-                  <span className='badge badge-sm indicator-item'>8</span>
+                  <span className='badge badge-sm indicator-item indicator-start'>
+                    8
+                  </span>
                 </div>
               </label>
               <div
@@ -218,8 +212,9 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-          <div className='border-l-2 pl-4'>
-            <FiSettings size={16} />
+
+          <div className=' flex justify-center border-l-2 px-2 text-xsm'>
+            <Settings />
           </div>
         </div>
       </div>
