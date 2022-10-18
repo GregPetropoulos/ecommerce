@@ -14,7 +14,7 @@ const SearchBar = () => {
   return (
     <>
       {isSearch ? (
-        <div className=' form-control flex justify-center'>
+        <div className=' form-control flex flex-row justify-center'>
           <input
             className='input input-xs input-bordered text-neutral-content'
             // type='text'

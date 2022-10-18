@@ -1,17 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { shopAllLinks, bundleSaveAllLinks } from '../data/links';
 import Settings from './Setting';
 import SearchBar from './SearchBar';
-
 import Header from './Header';
+import menuWoman from '../assets/images/women/menu-woman.jpg';
+
+import {
+  shopAllLinks,
+  aboutUsLinks,
+  menTopsLink,
+  menBottomsLink,
+  womenBottomsLink,
+  womenTopsLink,
+  womenDressesLink
+} from '../data/links';
 
 const Navbar = () => {
   return (
-    <div className='flex flex-col'>
+    <>
       {/* <Header/> */}
-      {/* <div className='navbar bg-transparent z-10 fixed text-primary'> */}
-      <div className='navbar bg-transparent text-primary'>
+      <div className='navbar z-[100] bg-secondary relative text-primary'>
         <div className='navbar-start'>
           <div className='dropdown'>
             <label tabIndex={0} className='btn btn-ghost md:hidden'>
@@ -69,7 +77,7 @@ const Navbar = () => {
 
                 {/* MOBILE NESTED DROPDOWN */}
                 <ul className='p-2 invisible sm:visible'>
-                  {bundleSaveAllLinks.map((item, idx) => (
+                  {aboutUsLinks.map((item, idx) => (
                     <li key={idx}>
                       <Link to={item.route}>{item.text}</Link>
                     </li>
@@ -96,15 +104,15 @@ const Navbar = () => {
           </div>
           <Link
             to='/'
-            className='btn btn-ghost normal-case font-bold text-lg tracking-widest text-danger'>
+            className='btn btn-ghost normal-case font-bold text-2xl text-red-700 tracking-widest'>
             Moda
           </Link>
         </div>
         <div className='navbar-center hidden md:flex'>
           {/* DESKTOP  */}
           <ul className='menu menu-horizontal p-0'>
-            <li tabIndex={0}>
-              <Link to='/women' className='font-bold'>
+            <li tabIndex={0} className=''>
+              <Link to='/women' className='font-bold text-lg'>
                 WOMEN
                 <svg
                   className='fill-current'
@@ -115,17 +123,56 @@ const Navbar = () => {
                   <path d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' />
                 </svg>
               </Link>
+
               {/* DESKTOP NESTED DROPDOWN */}
-              <ul className='p-2'>
-                {shopAllLinks.map((item, idx) => (
-                  <li key={idx}>
-                    <Link to={item.route}>{item.text}</Link>
-                  </li>
-                ))}
+              <ul className='p-2 bg-primary-content'>
+                <div className='tabs flex-row justify-center'>
+                  <Link
+                    to='/women/tops'
+                    className='text-base tab tab-bordered hover:tab-active mb-3'>
+                    TOPS
+                  </Link>
+                  {womenTopsLink.map((item, idx) => (
+                    <li key={idx}>
+                      <Link to={item.route} className='text-sm flex flex-col'>
+                        {item.text}
+                      </Link>
+                    </li>
+                  ))}
+                  <Link
+                    to='/women/bottoms'
+                    className='tab tab-bordered hover:tab-active text-base mb-3'>
+                    BOTTOMS
+                  </Link>
+                  {womenBottomsLink.map((item, idx) => (
+                    <li key={idx}>
+                      <Link to={item.route} className='text-sm flex flex-col'>
+                        {item.text}
+                      </Link>
+                    </li>
+                  ))}
+                  <Link
+                    to='/women/dresses'
+                    className='tab tab-bordered hover:tab-active text-base mb-3'>
+                    DRESSES
+                  </Link>
+                  {womenDressesLink.map((item, idx) => (
+                    <li key={idx}>
+                      <Link to={item.route} className='text-sm flex flex-col'>
+                        {item.text}
+                      </Link>
+                    </li>
+                  ))}
+                </div>
+                <img
+                  src={'https://images.unsplash.com/photo-1550928323-31789f5b5d61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80'||menuWoman}
+                  className='mix-blend-luminosity'
+                  alt={''}
+                />
               </ul>
             </li>
             <li tabIndex={0}>
-              <Link to='/men' className='font-bold'>
+              <Link to='/men' className='font-bold text-lg'>
                 MEN
                 <svg
                   className='fill-current'
@@ -138,29 +185,86 @@ const Navbar = () => {
               </Link>
 
               {/* DESKTOP NESTED DROPDOWN */}
-              <ul className='p-2'>
-                {bundleSaveAllLinks.map((item, idx) => (
+              <ul className='p-2 bg-primary-content'>
+                <div className='tabs flex-row justify-center'>
+                  <Link
+                    to='/men/tops'
+                    className='tab tab-bordered hover:tab-active text-base mb-3'>
+                    TOPS
+                  </Link>
+                  {menTopsLink.map((item, idx) => (
+                    <li key={idx}>
+                      <Link to={item.route} className='text-sm flex flex-col'>
+                        {item.text}
+                      </Link>
+                    </li>
+                  ))}
+                  <Link
+                    to='/men/bottoms'
+                    className='tab tab-bordered hover:tab-active text-base mb-3'>
+                    BOTTOMS
+                  </Link>
+                </div>
+                {menBottomsLink.map((item, idx) => (
                   <li key={idx}>
-                    <Link to={item.route}>{item.text}</Link>
+                    <Link to={item.route} className='text-sm flex flex-col'>
+                      {item.text}
+                    </Link>
                   </li>
                 ))}
+                <img
+                  src={
+                    'https://images.unsplash.com/photo-1519058082700-08a0b56da9b4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80'
+                  }
+                  className='mix-blend-luminosity'
+                  alt={''}
+                />
               </ul>
             </li>
             <li>
-              <Link to='/gear' className='font-bold'>
+              <Link to='/gear' className='font-bold text-lg'>
                 GEAR
               </Link>
             </li>
 
             <li>
-              <Link to='/sale' className='font-bold'>
+              <Link to='/sale' className='font-bold text-lg'>
                 SALE
               </Link>
             </li>
-            <li>
-              <Link to='/aboutus' className='font-bold'>
+            {/* <li>
+              <Link to='/aboutus' className='font-bold text-lg'>
                 ABOUT US
               </Link>
+            </li> */}
+            <li tabIndex={0}>
+              <Link to='/aboutus' className='font-bold text-lg'>
+                ABOUT US
+                <svg
+                  className='fill-current'
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='20'
+                  height='20'
+                  viewBox='0 0 24 24'>
+                  <path d='M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z' />
+                </svg>
+              </Link>
+
+              {/* DESKTOP NESTED DROPDOWN */}
+              <ul className='p-2 bg-primary-content'>
+                <div className='tabs flex flex-row justify-center'>
+                  {/* <Link to='/men/tops' className='tab tab-bordered'>
+                    TOPS
+                  </Link> */}
+                  {aboutUsLinks.map((item, idx) => (
+                    <li key={idx} className='flex flex-col'>
+                      <Link to={item.route} className='text-sm'>
+                        {item.text}
+                      </Link>
+                    </li>
+                  ))}
+                </div>
+              </ul>
             </li>
           </ul>
         </div>
@@ -201,7 +305,7 @@ const Navbar = () => {
                 tabIndex={0}
                 className='mt-3 card card-compact dropdown-content w-52 bg-base-100 shadow '>
                 <div className='card-body'>
-                  <span className='font-bold text-lg'>8 Items</span>
+                  <span className='font-bold '>8 Items</span>
                   <span className='text-info'>Subtotal: $999</span>
                   <div className='card-actions'>
                     <button className='btn btn-primary btn-block'>
@@ -218,7 +322,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

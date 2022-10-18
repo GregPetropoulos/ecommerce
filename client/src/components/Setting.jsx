@@ -16,7 +16,7 @@ const Setting = () => {
         </button>
           ) :
           
-          <FiSettings className='hover:cursor-pointer' size={12} onClick={()=> setIsSetting(!isSetting)} />
+          <FiSettings className='cursor-pointer' size={12} onClick={()=> setIsSetting(!isSetting)} />
         }
         </>
   );
