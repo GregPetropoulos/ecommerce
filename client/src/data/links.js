@@ -8,13 +8,13 @@ export const shopAllLinks = [
   { route: '/login', text: 'Login' }
 ];
 export const aboutUsLinks = [
-  { route: '/aboutus', text: 'About Us' },
-  { route: '/ourimpact', text: 'Our Impact' },
-  { route: '/principles', text: 'Our Guiding Principles' },
-  { route: '/howweship', text: 'How We Ship' },
-  { route: '/sustainably', text: 'Sustainably' },
-  { route: '/contactus', text: 'Contact Us' },
-  { route: '/login', text: 'Login' }
+  { route: '/aboutus', text: 'ABOUTUS' },
+  { route: '/ourimpact', text: 'OUR IMPACT' },
+  { route: '/principles', text: 'OUR GUIDING PRINCIPLES' },
+  { route: '/howweship', text: 'HOW WE SHIP' },
+  { route: '/sustainably', text: 'SUSTAINABLE' },
+  { route: '/contactus', text: 'CONTACT US' },
+  { route: '/login', text: 'LOGIN' }
 ];
 export const menTopsLink = [
   { route: 'men/jackets', text: 'JACKETS' },

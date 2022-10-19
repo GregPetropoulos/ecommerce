@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <>
       {/* <Header/> */}
-      <div className='navbar z-[100] bg-secondary relative text-primary'>
+      <div className='navbar z-[100] p-10 bg-secondary relative text-primary'>
         <div className='navbar-start'>
           <div className='dropdown'>
             <label tabIndex={0} className='btn btn-ghost md:hidden'>
@@ -165,7 +165,10 @@ const Navbar = () => {
                   ))}
                 </div>
                 <img
-                  src={'https://images.unsplash.com/photo-1550928323-31789f5b5d61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80'||menuWoman}
+                  src={
+                    'https://images.unsplash.com/photo-1550928323-31789f5b5d61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80' ||
+                    menuWoman
+                  }
                   className='mix-blend-luminosity'
                   alt={''}
                 />
@@ -251,14 +254,13 @@ const Navbar = () => {
               </Link>
 
               {/* DESKTOP NESTED DROPDOWN */}
-              <ul className='p-2 bg-primary-content'>
-                <div className='tabs flex flex-row justify-center'>
-                  {/* <Link to='/men/tops' className='tab tab-bordered'>
-                    TOPS
-                  </Link> */}
+              <ul className='p-2 bg-primary-content text-center'>
+                <div className='tabs flex flex-col align-middle justify-center'>
                   {aboutUsLinks.map((item, idx) => (
-                    <li key={idx} className='flex flex-col'>
-                      <Link to={item.route} className='text-sm'>
+                    <li key={idx} className=''>
+                      <Link
+                        to={item.route}
+                        className='text-sm flex flex-row justify-center'>
                         {item.text}
                       </Link>
                     </li>
