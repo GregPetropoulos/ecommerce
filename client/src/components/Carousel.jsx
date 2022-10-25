@@ -19,7 +19,7 @@ const Carousel = () => {
   };
 
   return (
-    <>
+    <div className='relative'>
       {slides.map((slide, idx) => {
         return (
           <div key={idx} className='carousel-item relative w-full'>
@@ -43,7 +43,7 @@ const Carousel = () => {
                 onClick={nextSlide}
               />
             </div>
-    </>
+    </div>
   );
 };
 export default Carousel;

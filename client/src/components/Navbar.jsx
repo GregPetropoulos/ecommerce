@@ -19,7 +19,7 @@ const Navbar = () => {
   return (
     <>
       {/* <Header/> */}
-      <div className='navbar z-[100] p-10 bg-secondary relative text-primary'>
+      <div className='navbar z-[100] p-10 bg-primary-content relative text-primary'>
         <div className='navbar-start'>
           <div className='dropdown'>
             <label tabIndex={0} className='btn btn-ghost md:hidden'>
