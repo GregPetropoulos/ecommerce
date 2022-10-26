@@ -33,7 +33,7 @@ const Carousel = () => {
           </div>
         );
       })}
-            <div className='absolute flex justify-between transform -translate-y-1/2 left-10 right-10 top-3/4'>
+            <div className='absolute flex justify-between transform -translate-y-1/2 left-10 right-10 top-1/2'>
               <FaChevronLeft
                 className='left-arrow btn btn-circle w-20 h-20 p-2'
                 onClick={prevSlide}

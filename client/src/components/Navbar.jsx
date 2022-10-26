@@ -4,6 +4,8 @@ import Settings from './Setting';
 import SearchBar from './SearchBar';
 import Header from './Header';
 import menuWoman from '../assets/images/women/menu-woman.jpg';
+import logo from '../assets/images/logo/moda-logo.png'
+import mockLogo from '../assets/images/logo/mock-logo.png'
 
 import {
   shopAllLinks,
@@ -104,8 +106,9 @@ const Navbar = () => {
           </div>
           <Link
             to='/'
-            className='btn btn-ghost normal-case font-bold text-2xl text-red-700 tracking-widest'>
-            Moda
+            // className='btn btn-ghost normal-case  font-bold text-2xl text-red-700 tracking-widest rounded-full'>
+            className='btn btn-ghost btn-2xl'> 
+            <img className='w-full h-full'src={mockLogo} alt="logo" />
           </Link>
         </div>
         <div className='navbar-center hidden md:flex'>
