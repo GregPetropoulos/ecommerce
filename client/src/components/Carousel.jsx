@@ -4,12 +4,12 @@ import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 
 const Carousel = () => {
   const [current, setCurrent] = useState(0);
-  console.log('current', current);
+  // console.log('current', current);
 
-  useEffect(() => {
-    console.log('show animation');
-    return () => console.log('unmount animation');
-  }, []);
+  // useEffect(() => {
+  //   // console.log('show animation');
+  //   return () => console.log('carousel unmount animation');
+  // }, []);
   const length = slides.length;
   const prevSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);

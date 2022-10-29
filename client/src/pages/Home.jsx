@@ -3,7 +3,7 @@ import SecondaryFooter from '../components/SecondaryFooter';
 import Carousel from '../components/Carousel';
 import Grid from '../components/Grid';
 import DividerTitle from '../components/DividerTitle';
-
+import NewArrivals from '../components/NewArrivals';
 
 const Home = () => {
   return (
@@ -13,6 +13,7 @@ const Home = () => {
       <hr className='my-8 p-px ' />
       <Grid />
 <DividerTitle title={'NEW ARRIVALS'}/>
+<NewArrivals/>
       <div>Feature</div>
       <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate et consequuntur magnam delectus excepturi velit, quibusdam ipsum esse minus iusto id in fugit impedit suscipit ad perspiciatis. Dolores, error odio!
       Quae aperiam totam asperiores itaque! Voluptatum optio numquam a aspernatur. Fugit aliquid odit sunt blanditiis, ea sed quibusdam magnam veniam in natus id, sequi, a eius laudantium. Esse, totam sint.

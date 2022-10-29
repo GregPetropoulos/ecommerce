@@ -14,8 +14,7 @@ const BackToTop = () => {
       }
     });
     return window.removeEventListener(
-      'scroll',
-      console.log('removed scroll event listener on un mount in useEffect ')
+      'scroll', console.log('removed scroll event listener on un mount in useEffect ')
     );
   }, [showTopBtn]);
 
@@ -26,6 +25,7 @@ const BackToTop = () => {
       behavior: 'smooth'
     });
   };
+
   return (
     <>
       {showTopBtn && (
