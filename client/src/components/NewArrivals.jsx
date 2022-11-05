@@ -1,89 +1,76 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import ArrivalCards from './ArrivalCards';
-
-const mensNewArrivals = [
-  {
-    name: 'Sweater',
-    img: 'https://images.unsplash.com/photo-1519804270019-39e929a7afb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
-    newPrice: 20,
-    oldPrice: 30
-  },
-  {
-    name: 'Tees',
-    img: 'https://images.unsplash.com/photo-1531891570158-e71b35a485bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8bW9kZWxzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=627&q=80',
-    newPrice: 40,
-    oldPrice: 30
-  },
-  {
-    name: 'Shorts',
-    img: 'https://images.unsplash.com/photo-1545922996-cb0da7a16c2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
-    newPrice: 44,
-    oldPrice: 33
-  },
-  {
-    name: 'Sweater',
-    img: 'https://images.unsplash.com/photo-1519804270019-39e929a7afb5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
-    newPrice: 20,
-    oldPrice: 30
-  },
-  {
-    name: 'Tees',
-    img: 'https://images.unsplash.com/photo-1589310243389-96a5483213a8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fHNoaXJ0c3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=627&q=80',
-    newPrice: 40,
-    oldPrice: 30
-  },
-  {
-    name: 'Shorts',
-    img: 'https://images.unsplash.com/photo-1545922996-cb0da7a16c2f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=627&q=80',
-    newPrice: 44,
-    oldPrice: 33
-  }
-];
+import {
+  mensNewArrivals,
+  womensNewArrivals as womansNewArrivals,
+  gearNewArrivals,
+  trainingNewArrivals,
+  bottomsNewArrivals
+} from '../data/arrivals';
 
 const NewArrivals = () => {
+  //NEED TO FETCH THIS DATA FROM STRAPI/UMBRACO
   const [isClicked, setIsClicked] = useState('');
-  const [newArrivalData, setNewArrivalData] = useState(mensNewArrivals);
 
   const onClick = (e) => {
     setIsClicked((prev) => e.target.value);
   };
-
-  console.log('isclicked', isClicked);
   return (
     <>
       <div className='tabs justify-center '>
-        <button value={'women'} onClick={onClick} className='tab' alt={''}>
+        <button
+          value={'women'}
+          onClick={onClick}
+          className='tab text-xl'
+          alt={''}>
           Women
         </button>
-        <button value={'men'} onClick={onClick} className='tab ' alt={''}>
+        <button
+          value={'men'}
+          onClick={onClick}
+          className='tab text-xl'
+          alt={''}>
           Men
         </button>
-        <button value={'gear'} onClick={onClick} className='tab' alt={''}>
+        <button
+          value={'gear'}
+          onClick={onClick}
+          className='tab text-xl'
+          alt={''}>
           Gear
         </button>
-        <button value={'training'} onClick={onClick} className='tab' alt={''}>
+        <button
+          value={'training'}
+          onClick={onClick}
+          className='tab text-xl'
+          alt={''}>
           Training
         </button>
-        <button value={'bottoms'} onClick={onClick} className='tab' alt={''}>
+        <button
+          value={'bottoms'}
+          onClick={onClick}
+          className='tab text-xl'
+          alt={''}>
           Bottoms
         </button>
       </div>
-      {/* carousel of product cards */}
-      <div className='flex flex-row w-full justify-evenly align-middle'>
-        {/* Row of cards */}
-        {isClicked === 'women' ? (
-          <ArrivalCards newArrivalData={newArrivalData} />
-        ) : isClicked === 'men' ? (
-          <ArrivalCards newArrivalData={newArrivalData} />
-        ) : isClicked === 'gear' ? (
-          <ArrivalCards newArrivalData={newArrivalData} />
-        ) : isClicked === 'training' ? (
-          <ArrivalCards newArrivalData={newArrivalData} />
-        ) : isClicked === 'bottoms' ? (
-          <ArrivalCards newArrivalData={newArrivalData} />
-        ) : (
-          <ArrivalCards newArrivalData={newArrivalData} />
-        )}
+
+      <div className='flex flex-col justify-center align-middle'>
+        <div className='  justify-center align-middle rounded-box scroll-smooth flex-wrap md:justify-center  carousel m-4 md:flex-nowrap'>
+          {isClicked === 'women' ? (
+            <ArrivalCards data={mensNewArrivals} />
+          ) : isClicked === 'men' ? (
+            <ArrivalCards data={womansNewArrivals} />
+          ) : isClicked === 'gear' ? (
+            <ArrivalCards data={gearNewArrivals} />
+          ) : isClicked === 'training' ? (
+            <ArrivalCards data={trainingNewArrivals} />
+          ) : isClicked === 'bottoms' ? (
+            <ArrivalCards data={bottomsNewArrivals} />
+          ) : (
+            <ArrivalCards data={mensNewArrivals} />
+          )}
+        </div>
       </div>
     </>
   );
