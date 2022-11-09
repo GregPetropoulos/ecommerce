@@ -6,6 +6,7 @@ import DividerTitle from '../components/DividerTitle';
 import NewArrivals from '../components/NewArrivals';
 import Blogs from '../components/Blogs';
 import BrandFooter from '../components/BrandFooter';
+import NewsletterSignUp from '../components/NewsletterSignUp';
 
 const Home = () => {
   return (
@@ -19,6 +20,7 @@ const Home = () => {
       <DividerTitle title={'RECENT POSTS'} />
       <Blogs />
       <BrandFooter/>
+      <NewsletterSignUp/>
     </div>
   );
 };
