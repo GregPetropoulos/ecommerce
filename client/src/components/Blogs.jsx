@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 
 const Blogs = () => {
   return (
-    <div className='flex flex-row justify-center align-middle m-40 gap-6'>
+    <div className='block  m-4 sm:flex sm:flex-row sm:justify-center sm:align-middle sm:m-20 gap-6'>
       <div className=' flex flex-col justify-center align-middle'>
-        <div className=' flex flex-row w-[600px]'>
+        <div className=' flex flex-row min-w-lg'>
           <Link to='/blog1'>
             <img
               className='object-cover'
@@ -20,7 +20,7 @@ const Blogs = () => {
         </div>
         <div className='flex-row mb-10'>
           <h2 className='mt-10 text-3xl'>Blog1</h2>
-          <p className='text-left mx-10 my-4'>
+          <p className='text-center sm:text-left mx-10 my-4 '>
             Description Lorem ipsum dolor, sit amet consectetur adipisicing
             elit. Voluptatum recusandae voluptas quisquam neque officiis
             reprehenderit exercitationem est omnis deserunt placeat possimus
@@ -31,7 +31,7 @@ const Blogs = () => {
         </div>
       </div>
       <div className='flex flex-col justify-center align-middle'>
-        <div className='flex flex-row  w-[600px] '>
+        <div className='flex flex-row  min-w-lg '>
           <Link to='/blog2'>
             <img
               className='object-cover'
@@ -44,7 +44,7 @@ const Blogs = () => {
         </div>
         <div className='flex-row mb-10'>
           <h2 className='mt-10 text-3xl'>Blog1</h2>
-          <p className='text-left mx-10 my-4'>
+          <p className='text-center sm:text-left mx-10 my-4'>
             Description Lorem ipsum dolor, sit amet consectetur adipisicing
             elit. Voluptatum recusandae voluptas quisquam neque officiis
             reprehenderit exercitationem est omnis deserunt placeat possimus

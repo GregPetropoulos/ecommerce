@@ -5,6 +5,7 @@ import Grid from '../components/Grid';
 import DividerTitle from '../components/DividerTitle';
 import NewArrivals from '../components/NewArrivals';
 import Blogs from '../components/Blogs';
+import BrandFooter from '../components/BrandFooter';
 
 const Home = () => {
   return (
@@ -15,10 +16,9 @@ const Home = () => {
       <Grid />
       <DividerTitle title={'NEW ARRIVALS'} />
       <NewArrivals />
-      <div>Feature</div>
-      <div>Recent Posts</div>
       <DividerTitle title={'RECENT POSTS'} />
       <Blogs />
+      <BrandFooter/>
     </div>
   );
 };
