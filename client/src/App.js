@@ -6,6 +6,7 @@ import Cancel from './pages/Cancel';
 import BackToTop from './components/BackToTop';
 import Blog1 from './pages/Blog1';
 import Blog2 from './pages/Blog2';
+import SiteFooter from './components/SiteFooter';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path='/blog2' element={<Blog2 />} />
       </Routes>
       <BackToTop />
+      <SiteFooter/>
     </Router>
   );
 }

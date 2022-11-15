@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+  //TODO CHECK IF EMAIL ALREADY EXIST
+  //TODO BUTTON OVERFLOW ISSUE
+
 const NewsletterSignUp = () => {
   const [email, setEmail] = useState('');
   const [errors, setErrors] = useState('');
@@ -7,7 +10,7 @@ const NewsletterSignUp = () => {
   //Email check against normal standards
   const isEmail = (email) =>
     /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email);
-    
+
   const onChange = (e) => {
     setEmail(e.target.value);
   };
@@ -53,36 +56,36 @@ const NewsletterSignUp = () => {
           </div>
         </div>
       )}
-      <div className='flex flex-row py-20 justify-center align-middle'>
-        <div className='flex flex-col justify-center align-middle w-full'>
-          <h1 className='text-2xl font-bold text-center'>
-            SIGN UP{' '}
-            <span className='text-secondary'>FOR SPECIAL PROMOTIONS</span>
-          </h1>
-          <p className='text-center'>
-            Get exclusive deals you wont find anywhere else straight to your
-            inbox!
-          </p>
-        </div>
-        <div className='flex flex-col justify-center align-middle w-full'>
-          <form
-            onSubmit={onSubmit}
-            className='border-4 border-secondary/[.25] rounded'>
-            <input
-              type='text'
-              value={email}
-              onChange={onChange}
-              required
-              className='input w-3/4 text-secondary bg-primary border-0 rounded-none border-r-2 border-r-secondary/[.25] px-4 placeholder:text-neutral-content'
-              placeholder='Enter your email address'
-            />
+        <div className='flex flex-row py-28 justify-center align-middle  px-10 bg-slate-50  flex-wrap sm:flex-nowrap'>
+          <div className='flex flex-col justify-center align-middle w-full mr-3'>
+            <h1 className='text-2xl font-bold text-center'>
+              SIGN UP{' '}
+              <span className='text-secondary'>FOR SPECIAL PROMOTIONS</span>
+            </h1>
+            <p className='text-center'>
+              Get exclusive deals you wont find anywhere else straight to your
+              inbox!
+            </p>
+          </div>
+          <div className='flex flex-col justify-center align-middle w-full ml-3 my-10 sm:my-0'>
+            <form
+              onSubmit={onSubmit}
+              className='border-4 border-secondary/[.25] rounded justify-between'>
+              <input
+                type='text'
+                value={email}
+                onChange={onChange}
+                required
+                className='input text-secondary bg-primary border-0 w-3/4 rounded-none border-r-2 border-r-secondary/[.25] px-4 placeholder:text-neutral-content'
+                placeholder='Enter your email address'
+              />
 
-            <button className='btn text-secondary font-bold text-xl bg-primary w-1/4 border-0 hover:bg-primary '>
-              SUBSCRIBE
-            </button>
-          </form>
+              <button className='btn btn-sm text-sm w-1/4 text-secondary font-bold rounded-none bg-primary  border-0  hover:bg-primary '>
+                SUBSCRIBE
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
     </>
   );
 };

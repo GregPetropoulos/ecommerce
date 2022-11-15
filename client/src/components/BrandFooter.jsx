@@ -4,7 +4,7 @@ import React from 'react';
 
 const BrandFooter = () => {
   return (
-    <div className='carousel justify-evenly align-middle'>
+    <div className='carousel justify-evenly align-middle my-10'>
       <div className='carousel-item opacity-30 hover:opacity-100'>
         <img
           src={

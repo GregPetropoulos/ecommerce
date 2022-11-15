@@ -29,9 +29,9 @@ const BackToTop = () => {
   return (
     <>
       {showTopBtn && (
-        <div className='block right-3 bottom-12 fixed border-2 rounded-full border-neutral-content p-1'>
-          <button onClick={goToTop} className='btn btn-circle'>
-            <BiUpArrow size={30} />
+        <div className='bg-primary-content block right-3 bottom-12 fixed border-2 rounded-full border-neutral-content p-1'>
+          <button onClick={goToTop} className='btn btn-sm btn-circle '>
+            <BiUpArrow size={20} className='' />
           </button>
         </div>
       )}
