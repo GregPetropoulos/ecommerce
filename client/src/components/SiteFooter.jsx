@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import PropTypes from 'prop-types';
 import { FaPhoneAlt, FaFax } from 'react-icons/fa';
 import { IoLocation } from 'react-icons/io5';
@@ -7,7 +7,6 @@ import paymentCardImage from '../assets/images/payment/payment-images.png';
 
 //TODO CREATE A TOGGLE COMPONENT
 //TODO REFACTOR DATA WITH JSON BODY RATHER THAN HARDCODE CONTENT VALUES
-//TODO
 
 const SiteFooter = () => {
   const [data, setData] = useState([
@@ -42,7 +41,6 @@ const SiteFooter = () => {
 
   return (
     <footer>
-      {/* BY MAKING THE SECTION FLEX WRAP ALL CHILDREN MUST BE COLUMNS WITH ROWS FOR DESKTOP */}
       <section className='flex flex-col sm:flex sm:flex-row sm:justify-evenly sm:flex-wrap m-3 justify-center align-middle '>
         {data.length > 0 &&
           data !== null &&
@@ -93,6 +91,8 @@ const SiteFooter = () => {
                   </div>
                 </>
               )}
+
+              {/* ADDRESS */}
               {/* MOBILE */}
               {item.bool && item.id === 1 && (
                 <div className='flex flex-row w-1/2 sm:hidden'>
@@ -102,20 +102,8 @@ const SiteFooter = () => {
                   </p>
                 </div>
               )}
+
               {/* TELEPHONE */}
-              {/* DESKTOP */}
-              {/* {item.id === 1 && (
-                <div className='hidden sm:flex sm:flex-col sm:flex-wrap'>
-                  <div className='flex flex-row justify-around'>
-                    <FaPhoneAlt />{' '}
-                    <p className='text-xs  ml-2 mb-2 '>Telephones: (+1) 866-540-3229</p>
-                  </div>
-                  <div className='flex flex-row justify-around align-middle'>
-                    <FaFax size={10} />
-                    <p className='text-xs ml-2 mb-2'>Fax: (+1) 866-540-3229</p>
-                  </div>
-                </div>
-              )} */}
               {/* MOBILE */}
               {item.bool && item.id === 1 && (
                 <div className='flex flex-col flex-wrap w-1/2  align-middle  sm:hidden'>
@@ -135,15 +123,6 @@ const SiteFooter = () => {
               )}
 
               {/* EMAIL */}
-              {/* DESKTOP */}
-              {/* {item.id === 1 && (
-                <div className='hidden sm:flex sm:flex-row '>
-                  <AiOutlineMail />{' '}
-                  <p className='text-xs  ml-2 mb-2'>
-                    Email: support@iliosthemes.com
-                  </p>
-                </div>
-              )} */}
               {/* MOBILE */}
               {item.bool && item.id === 1 && (
                 <div className='flex flex-col flex-wrap w-1/2  align-middle  sm:hidden'>
@@ -259,7 +238,7 @@ const SiteFooter = () => {
               {/* OPENING TIME */}
               {/* DESKTOP */}
               {item.id === 5 && (
-              <>
+                <>
                   <div className='hidden sm:flex sm:flex-row sm:justify-between'>
                     <p className='text-xs mx-3 '>M-F</p>
                     <p className='text-xs '>9:00 AM - 11:00 PM</p>
@@ -281,7 +260,7 @@ const SiteFooter = () => {
                     <p className='text-xs'>30% Off Sale</p>
                   </div>
                 </>
-                )}
+              )}
               {/* MOBILE */}
               {item.bool && item.id === 5 && (
                 <div className='flex flex-col flex-wrap w-full mt-1 align-middle  sm:hidden'>
@@ -309,8 +288,6 @@ const SiteFooter = () => {
                   </div>
                 </div>
               )}
-
-              {/* <div className='flex flex-col'></div> */}
             </div>
           ))}
       </section>
