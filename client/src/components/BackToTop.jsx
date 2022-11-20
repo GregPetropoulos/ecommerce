@@ -5,20 +5,26 @@ const BackToTop = () => {
   const [showTopBtn, setShowTopBtn] = useState(false);
 
   useEffect(() => {
-    console.log('scroll mounted useEffect');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 400) {
         setShowTopBtn(true);
       } else {
         setShowTopBtn(false);
       }
+      // If bottom of page reached remove back top to top button
+      window.onscroll = () => {
+        if (
+          window.innerHeight + window.pageYOffset >=
+          document.body.offsetHeight
+        ) {
+          setShowTopBtn(false);
+        }
+      };
     });
-    return window.removeEventListener(
-      'scroll', console.log('removed scroll event listener on un mount in useEffect ')
-    );
-  }, [showTopBtn]);
 
-  console.log('scroll component render');
+    return window.removeEventListener('scroll', console.log('cleanup'));
+  }, []);
+
   const goToTop = () => {
     window.scrollTo({
       top: 0,
