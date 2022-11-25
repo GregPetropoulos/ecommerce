@@ -1,4 +1,5 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FaPhoneAlt, FaFax } from 'react-icons/fa';
 import { IoLocation } from 'react-icons/io5';
@@ -139,10 +140,14 @@ const SiteFooter = () => {
               {item.id === 2 && (
                 <>
                   <div className='hidden sm:flex sm:flex-row'>
-                    <p className='text-xs ml-2 mb-2 w-full'>My Account</p>
+                    <Link to='/myaccount'>
+                      <p className='text-xs ml-2 mb-2 w-full'>My Account</p>
+                    </Link>
                   </div>
                   <div className='hidden sm:flex sm:flex-row'>
-                    <p className='text-xs ml-2 mb-2 w-full'>Login</p>{' '}
+                    <Link to='/login'>
+                      <p className='text-xs ml-2 mb-2 w-full'>Login</p>{' '}
+                    </Link>
                   </div>
                   <div className='hidden sm:flex sm:flex-row'>
                     <p className='text-xs ml-2 mb-2 w-full'>My Cart</p>
@@ -158,8 +163,12 @@ const SiteFooter = () => {
               {/* MOBILE */}
               {item.bool && item.id === 2 && (
                 <div className='flex flex-col flex-wrap w-1/2  align-middle  sm:hidden'>
-                  <p className='text-xs ml-2 mb-2 sm:text-sm'>My Account</p>
-                  <p className='text-xs ml-2 mb-2 sm:text-sm'>Login</p>{' '}
+                  <Link to='/myaccount'>
+                    <p className='text-xs ml-2 mb-2 sm:text-sm'>My Account</p>
+                  </Link>
+                  <Link to='/login'>
+                    <p className='text-xs ml-2 mb-2 sm:text-sm'>Login</p>{' '}
+                  </Link>
                   <p className='text-xs ml-2 mb-2 sm:text-sm'>My Cart</p>
                   <p className='text-xs ml-2 mb-2 sm:text-sm'>My Wishlist</p>
                   <p className='text-xs ml-2 mb-2 sm:text-sm'>Checkout</p>
