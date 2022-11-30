@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 5000;
 const colors = require('colors');
 const connectDB = require('./config/db');
 // Custom Middleware for status code in routes
-const { errorHandler } = require('./middleware/errorMiddleware');
+// const { errorHandler } = require('./middleware/errorMiddleware');
 
 // * CONNECT TO DB
 // *-------------------------------------------------------------
@@ -17,7 +17,7 @@ const app = express();
 // Test Route
 // app.get('/', (req, res)=> res.send('Hello'))
 app.get('/api/users', (req, res) =>
-  res.status(200).json({ message: 'Welcome to the support desk api' })
+  res.status(200).json({ message: 'Welcome to the ecommerce fashion store' })
 );
 
 // * MIDDLEWARE HANDLES THE BODY PARSER
@@ -31,8 +31,8 @@ app.use(express.urlencoded({ extended: false }));
 //* ROUTES
 // *-------------------------------------------------------------
 // connecting route, point to routes folder
-app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/tickets', require('./routes/ticketRoutes'));
+// app.use('/api/users', require('./routes/userRoutes'));
+// app.use('/api/tickets', require('./routes/ticketRoutes'));
 
 // // *SERVE FRONTEND--DEPLOYMENT TO RENDER
 // if (process.env.NODE_ENV === 'production') {
@@ -59,15 +59,14 @@ app.use('/api/tickets', require('./routes/ticketRoutes'));
 // if (process.env.NODE_ENV === 'production') {
 //     //*Set static folder
 //     app.use(express.static('client/build'));
-    
+
 //     app.get('*', (req,res) => res.sendFile(path.resolve(__dirname, 'client', 'build','index.html')));
 //   }
 // ------------------------------------------------------------------
 // ------------------------------------------------------------------
 
-
 //*Middleware for status codes
-app.use(errorHandler);
+// app.use(errorHandler);
 // *-------------------------------------------------------------
 
 app.listen(PORT, () => console.log(`Server started on ${PORT} Got em`));
