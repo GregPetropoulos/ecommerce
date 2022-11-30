@@ -16,9 +16,9 @@ connectDB();
 const app = express();
 // Test Route
 // app.get('/', (req, res)=> res.send('Hello'))
-app.get('/api/users', (req, res) =>
-  res.status(200).json({ message: 'Welcome to the ecommerce fashion store' })
-);
+// app.get('/api/users', (req, res) =>
+//   res.status(200).json({ message: 'Welcome to the ecommerce fashion store' })
+// );
 
 // * MIDDLEWARE HANDLES THE BODY PARSER
 // *-------------------------------------------------------------
@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: false }));
 //* ROUTES
 // *-------------------------------------------------------------
 // connecting route, point to routes folder
-// app.use('/api/users', require('./routes/userRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
 // app.use('/api/tickets', require('./routes/ticketRoutes'));
 
 // // *SERVE FRONTEND--DEPLOYMENT TO RENDER

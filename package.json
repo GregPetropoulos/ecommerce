@@ -17,7 +17,7 @@
     "render-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "name": "ecommerce",
-  "description": "http://plazathemes.com/demo/facon/english4/",
+  "description": "",
   "version": "1.0.0",
   "main": "server.js",
   "repository": {

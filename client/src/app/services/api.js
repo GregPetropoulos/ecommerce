@@ -1,9 +1,10 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { logOut, setCredentials } from '../../features/auth/authSlice';
-
+const BACK_END_URL='http://localhost:5000'
 // Axios analogous
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:3000',
+  // baseUrl: 'http://localhost:3000',
+  baseUrl: BACK_END_URL,
   credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     //if the state has a token put it in the request headers
