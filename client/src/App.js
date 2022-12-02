@@ -1,19 +1,27 @@
 import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+//PUBLIC
+import Layout from './components/Layout';
 import Home from './pages/Home';
 import Login from './components/Login';
-import MyAccount from './components/MyAccount';
 import Register from './components/Register';
-import Success from './pages/Success';
-import Cancel from './pages/Cancel';
 import Blog1 from './pages/Blog1';
 import Blog2 from './pages/Blog2';
 import SiteFooter from './components/SiteFooter';
 import BackToTop from './components/BackToTop';
+
+//AUTH
+import MyAccount from './components/MyAccount';
+import Success from './pages/Success';
+import Cancel from './pages/Cancel';
 import { PrivateOutlet } from './utils/PrivateOutlet';
 import RequireAuth from './features/auth/RequireAuth';
 import Welcome from './features/auth/Welcome';
-import Layout from './components/Layout';
+
+//TOAST
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -32,13 +40,25 @@ function App() {
           <Route element={<RequireAuth />}>
             <Route path='welcome' element={<Welcome />} />
             <Route path='myaccount' element={<MyAccount />} />
-            <Route path='/success' element={<Success />} />
-            <Route path='/cancel' element={<Cancel />} />
+            <Route path='success' element={<Success />} />
+            <Route path='cancel' element={<Cancel />} />
           </Route>
         </Route>
       </Routes>
       <BackToTop />
       <SiteFooter />
+      <ToastContainer
+        position='top-center'
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='colored'
+      />
     </Router>
   );
 }

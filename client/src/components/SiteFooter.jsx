@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
+//AUTH
+import { useAuth } from '../hooks/useAuth';
+
 import { FaPhoneAlt, FaFax } from 'react-icons/fa';
 import { IoLocation } from 'react-icons/io5';
 import { AiOutlineMail } from 'react-icons/ai';
 import paymentCardImage from '../assets/images/payment/payment-images.png';
+import PropTypes from 'prop-types';
 
 //TODO CREATE A TOGGLE COMPONENT
 //TODO REFACTOR DATA WITH JSON BODY RATHER THAN HARDCODE CONTENT VALUES
@@ -39,6 +43,7 @@ const SiteFooter = () => {
     //   return newState
     // });
   };
+  const {user} =useAuth();
 
   return (
     <footer>
@@ -140,7 +145,7 @@ const SiteFooter = () => {
               {item.id === 2 && (
                 <>
                   <div className='hidden sm:flex sm:flex-row'>
-                    <Link to='/myaccount'>
+                    <Link to={`${user}` ? '/myaccount' : '/'}>
                       <p className='text-xs ml-2 mb-2 w-full'>My Account</p>
                     </Link>
                   </div>
@@ -163,7 +168,7 @@ const SiteFooter = () => {
               {/* MOBILE */}
               {item.bool && item.id === 2 && (
                 <div className='flex flex-col flex-wrap w-1/2  align-middle  sm:hidden'>
-                  <Link to='/myaccount'>
+                  <Link to={`${user}` ? '/myaccount' : '/'}>
                     <p className='text-xs ml-2 mb-2 sm:text-sm'>My Account</p>
                   </Link>
                   <Link to='/login'>

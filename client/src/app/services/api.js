@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { logOut, setCredentials } from '../../features/auth/authSlice';
-const BACK_END_URL='http://localhost:5000'
+// const BACK_END_URL='http://localhost:5000/'
 // Axios analogous
 const baseQuery = fetchBaseQuery({
-  // baseUrl: 'http://localhost:3000',
-  baseUrl: BACK_END_URL,
-  credentials: 'include',
+  baseUrl: 'http://localhost:3000',
+  // baseUrl: BACK_END_URL,
+  // credentials: 'include',
   prepareHeaders: (headers, { getState }) => {
     //if the state has a token put it in the request headers
     const token = getState().auth.token;
@@ -27,9 +27,9 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
     const refreshResult = await baseQuery('/refresh', api, extraOptions);
     console.log('refreshResult', refreshResult);
     if (refreshResult?.data) {
-      const user = api.getState().auth.user;
+      const email = api.getState().auth.email;
       // Store the new token
-      api.dispatch(setCredentials(...refreshResult.data, user));
+      api.dispatch(setCredentials(...refreshResult.data, email));
       //Retry original query with new accessToken
       result = await baseQuery(args, api, extraOptions);
     } else {
@@ -39,7 +39,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 
   return result;
 };
-
 
 // The empty endpoints get the injected endpoints from authService etc
 export const api = createApi({

@@ -46,9 +46,14 @@ const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
+      //SEND EMAIL AND PW TO AUTHSLICE TO POST TO BACKEND AFTER PROMISE RESOLVES DISPATCH
       const userData = await login({ email, password }).unwrap();
-      dispatch(setCredentials({ ...userData }, email));
-      console.log(userData);
+
+      //THE RESPONSE FROM MY REST API GETS DISPATCHED TO STATE TO INCLUDE THE TOKEN
+      dispatch(setCredentials({ ...userData }));
+      // dispatch(setCredentials({ ...userData }, email)); no need for email after userData
+
+      console.log('userData', userData);
       setEmail('');
       setPassword('');
       navigate('/myaccount');

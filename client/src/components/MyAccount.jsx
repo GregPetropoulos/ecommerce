@@ -1,47 +1,60 @@
 import { useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
+
+//AUTH
+import { useAuth } from '../hooks/useAuth';
+import { logOut } from '../features/auth/authSlice';
+
 import BrandFooter from './BrandFooter';
 import NewsletterSignUp from './NewsletterSignUp';
-// RTK
-import { useSendLogoutMutation } from '../features/auth/authApiSlice';
+import PageError from './PageError';
+import LogoutButton  from './LogoutButton';
 
 const MyAccount = () => {
   const navigate = useNavigate();
+  const {user}=useAuth()
   const { pathname } = useLocation();
-  const [sendLogout, { isLoading, isSuccess, isError, error }] =
-    useSendLogoutMutation();
+  // const [sendLogout, { isLoading, isSuccess, isError, error }] =
+  //   useSendLogoutMutation();
 
-useEffect(()=>{
+  useEffect(() => {
     //When user logs out send to public /
-if(isSuccess) navigate('/')
+    if (!user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
-},[isSuccess,navigate])
-
-if(isLoading) return <p>Logging Out...</p>
-if(isError) return <p>Error:{error.data?.message}</p>
+  // if (isLoading) return <p>Logging Out...</p>;
+  // if (isError) return <PageError error={error} />;
 
   return (
     <>
-      <div className='flex flex-col align-middle '>
-        <h2 className='text-4xl'>My Account</h2>
-        <h3 className='text-3xl'>Hi User</h3>
-        <div className=''>
-          <h4 className='text-2xl'>Your Cart</h4>
-          <ul>
-            Saved Items
-            <li>item1</li>
-            <li>item2</li>
-            <li>item3</li>
-            <li>item4</li>...
-          </ul>
-        </div>
-        <div>Go to your cart</div>
+      {user ? (
+        <>
+          <div className='flex flex-col align-middle '>
+            <h2 className='text-4xl'>My Account</h2>
+            <h3 className='text-3xl'>Hi User</h3>
+            <div className=''>
+              <h4 className='text-2xl'>Your Cart</h4>
+              <ul>
+                Saved Items
+                <li>item1</li>
+                <li>item2</li>
+                <li>item3</li>
+                <li>item4</li>...
+              </ul>
+            </div>
+            <div>Go to your cart</div>
 
-        <button className='btn m-4'>Checkout</button>
-        <button className='btn m-4'>Continue Shopping</button>
-        <button className='btn m-4' onClick={()=>sendLogout()}>Logout</button>
-      </div>
-      <NewsletterSignUp />
+            <button className='btn m-4'>Checkout</button>
+            <button className='btn m-4'>Continue Shopping</button>
+<           LogoutButton/>
+          </div>
+          <NewsletterSignUp />
+        </>
+      ) : (
+        logOut()
+      )}
     </>
   );
 };
