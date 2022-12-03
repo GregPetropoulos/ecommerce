@@ -5,7 +5,6 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { logOut } from '../features/auth/authSlice';
 
-import BrandFooter from './BrandFooter';
 import NewsletterSignUp from './NewsletterSignUp';
 import PageError from './PageError';
 import LogoutButton  from './LogoutButton';
@@ -13,7 +12,7 @@ import LogoutButton  from './LogoutButton';
 const MyAccount = () => {
   const navigate = useNavigate();
   const {user}=useAuth()
-  const { pathname } = useLocation();
+  // const { pathname } = useLocation();
   // const [sendLogout, { isLoading, isSuccess, isError, error }] =
   //   useSendLogoutMutation();
 

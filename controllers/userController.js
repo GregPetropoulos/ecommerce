@@ -17,10 +17,10 @@ const jwt = require('jsonwebtoken');
 // * @route /api/users
 // * access Public
 const registerUser = asyncHandler(async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password1 } = req.body;
 
   // VALIDATE ALL FIELDS ARE FILLED
-  if (!firstName || !lastName || !email || !password) {
+  if (!firstName || !lastName || !email || !password1) {
     //SEND ERROR TO CLIENT FOR USER NOT FILLING ALL FIELDS
     res.status(400);
     throw new Error('Please include all required fields');
@@ -36,7 +36,7 @@ const registerUser = asyncHandler(async (req, res) => {
   //HASH THE PASSWORD WITH BCRYPT AND PROMISE BASED FUNCTION
   const salt = await bcrypt.genSalt(10);
   //HASH AND SALT
-  const hashedPassword = await bcrypt.hash(password, salt);
+  const hashedPassword = await bcrypt.hash(password1, salt);
 
   //CREATE USER
   const user = await User.create({

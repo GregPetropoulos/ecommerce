@@ -10,8 +10,15 @@ export const authService = api.injectEndpoints({
         method: 'POST',
         body: { ...credentials }
       })
+    }),
+    register: builder.mutation({
+      query: (userNew) => ({
+        url: API_URL + 'register',
+        method: 'POST',
+        body: { ...userNew }
+      })
     })
   })
 });
 
-export const { useLoginMutation } = authService;
+export const { useLoginMutation, useRegisterMutation } = authService;

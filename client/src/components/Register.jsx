@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch} from 'react-redux';
+
+//AUTH
+import { useRegisterMutation } from '../features/auth/authService';
+
 import BrandFooter from './BrandFooter';
 import NewsletterSignUp from './NewsletterSignUp';
 import PropTypes from 'prop-types';
@@ -13,33 +18,34 @@ const initialUser = {
 };
 
 const Register = () => {
+  const [register, { isLoading, isSuccess, isError }] = useRegisterMutation();
   const [newUser, setNewUser] = useState(initialUser);
-const{firstName,lastName,email,password1,password2}=newUser
-  // console.log('newUser', newUser);
+  const { firstName, lastName, email, password1, password2 } = newUser;
+  const navigate = useNavigate();
 
-  //   useEffect(()=>{
-  // setNewUser(initialUser)
+  useEffect(() => {
+    //* If register successful return login page
 
-  //   },[])
+    if (isSuccess) {
+      return navigate('/login');
+    }
+  }, [isSuccess, navigate]);
 
   const onChange = (e) => {
     const { value, name } = e.target;
     setNewUser({ ...newUser, [name]: value });
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     if (password1 !== password2) {
       alert(`passwords don't match`);
       setNewUser({ ...newUser, password2: '' });
     } else {
+      const user = await register({ ...newUser }).unwrap();
       setNewUser(initialUser);
     }
-    console.log('submit');
   };
-
-  //* If register successful return home page
-  // if (isAuthenticated) return <Navigate to='/myaccount' />;
 
   return (
     <div className='flex flex-col justify-center align-middle bg-primary text-center'>
@@ -112,7 +118,7 @@ const{firstName,lastName,email,password1,password2}=newUser
             onChange={onChange}
             className='input input-bordered w-full input-secondary mt-2 bg-primary '
           />
-            <label className='label justify-start'>
+          <label className='label justify-start'>
             <span className='text-error mr-2'>*</span>Confirm Password{' '}
           </label>
           <input

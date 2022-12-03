@@ -51,9 +51,6 @@ const Login = () => {
 
       //THE RESPONSE FROM MY REST API GETS DISPATCHED TO STATE TO INCLUDE THE TOKEN
       dispatch(setCredentials({ ...userData }));
-      // dispatch(setCredentials({ ...userData }, email)); no need for email after userData
-
-      console.log('userData', userData);
       setEmail('');
       setPassword('');
       navigate('/myaccount');

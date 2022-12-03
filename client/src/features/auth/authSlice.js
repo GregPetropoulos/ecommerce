@@ -14,9 +14,7 @@ const authSlice = createSlice({
   initialState: authState,
   reducers: {
     setCredentials: (state, action) => {
-      console.log('action.payload', action.payload);
       const { token } = action.payload;
-      console.log('token,email', token, action.payload);
       state.token = token;
       state.user = action.payload;
       toast.success('Yes!! you are logged in');
