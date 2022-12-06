@@ -17,7 +17,7 @@ const authSlice = createSlice({
       const { token } = action.payload;
       state.token = token;
       state.user = action.payload;
-      toast.success('Yes!! you are logged in');
+      toast.success(`Yes!! ${state.user.firstName} you are logged in`);
     },
     logOut: (state, action) => {
       state.token = null;

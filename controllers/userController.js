@@ -88,7 +88,34 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-// GENERATE THE TOKEN
+// * @desc delete current user
+// * @route /api/users/delete
+// * access Private
+
+const deleteUser = asyncHandler(async (req, res) => {
+  try {
+    await User.findByIdAndRemove({ _id: req.user.id });
+    res.json({ msg: 'User Deleted' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// * @desc Get current user
+// * @route /api/users/me
+// * access Private
+const getMe = asyncHandler(async (req, res) => {
+  const user = {
+    id: req.user._id,
+    email: req.user.email,
+    firstName: req.user.firstName,
+    lastName: req.user.lastName
+  };
+  res.status(200).json(user);
+});
+
+//* GENERATE THE TOKEN
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: '30d'
@@ -97,5 +124,7 @@ const generateToken = (id) => {
 
 module.exports = {
   loginUser,
-  registerUser
+  registerUser,
+  getMe,
+  deleteUser
 };

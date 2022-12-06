@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch} from 'react-redux';
+import { toast } from 'react-toastify';
 
 //AUTH
 import { useRegisterMutation } from '../features/auth/authService';
+import { setCredentials } from '../features/auth/authSlice';
+
 
 import BrandFooter from './BrandFooter';
 import NewsletterSignUp from './NewsletterSignUp';
@@ -22,14 +25,8 @@ const Register = () => {
   const [newUser, setNewUser] = useState(initialUser);
   const { firstName, lastName, email, password1, password2 } = newUser;
   const navigate = useNavigate();
+const dispatch= useDispatch()
 
-  useEffect(() => {
-    //* If register successful return login page
-
-    if (isSuccess) {
-      return navigate('/login');
-    }
-  }, [isSuccess, navigate]);
 
   const onChange = (e) => {
     const { value, name } = e.target;
@@ -39,10 +36,12 @@ const Register = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password1 !== password2) {
-      alert(`passwords don't match`);
+      toast.error(`passwords don't match`);
       setNewUser({ ...newUser, password2: '' });
     } else {
       const user = await register({ ...newUser }).unwrap();
+      dispatch(setCredentials(user))
+      navigate('/myaccount')
       setNewUser(initialUser);
     }
   };

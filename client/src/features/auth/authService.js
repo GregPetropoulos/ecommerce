@@ -17,7 +17,7 @@ export const authService = api.injectEndpoints({
         method: 'POST',
         body: { ...userNew }
       })
-    })
+    }),
   })
 });
 
