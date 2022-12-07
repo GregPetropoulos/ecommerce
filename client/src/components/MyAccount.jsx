@@ -1,31 +1,41 @@
-import { useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate, Navigate, useLocation } from 'react-router-dom';
+import LogoutButton from './LogoutButton';
 
 //AUTH
 import { useAuth } from '../hooks/useAuth';
 import { logOut } from '../features/auth/authSlice';
+import { useDispatch } from 'react-redux';
+import { useDeleteUserMutation } from '../features/auth/authService';
 
 import NewsletterSignUp from './NewsletterSignUp';
 import PageError from './PageError';
-import LogoutButton  from './LogoutButton';
+import { toast } from 'react-toastify';
 
 const MyAccount = () => {
   const navigate = useNavigate();
-  const {user}=useAuth()
-  // const { pathname } = useLocation();
-  // const [sendLogout, { isLoading, isSuccess, isError, error }] =
-  //   useSendLogoutMutation();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const { user } = useAuth();
+  const [deleteUser, { isSuccess, isError, isLoading, error }] =
+    useDeleteUserMutation();
 
-  useEffect(() => {
-    //When user logs out send to public /
-    if (!user) {
-      navigate('/');
+  const handleDelete = async () => {
+    try {
+      deleteUser(await user._id).unwrap();
+      dispatch(logOut())
+      // if (isSuccess ) {
+      //   dispatch(logOut());
+        toast.error(`Deleted ${user.firstName}`);
+      // }
+    } catch (err) {
+      console.error(err)
+      console.error(err.originalStatus)
     }
-  }, [user, navigate]);
+  };
 
-  // if (isLoading) return <p>Logging Out...</p>;
-  // if (isError) return <PageError error={error} />;
-
+  if (isLoading) return <p>Logging Out...</p>;
+  if (isError) return <PageError error={error} />;
   return (
     <>
       {user ? (
@@ -47,7 +57,10 @@ const MyAccount = () => {
 
             <button className='btn m-4'>Checkout</button>
             <button className='btn m-4'>Continue Shopping</button>
-<           LogoutButton/>
+            <button className='btn m-4 ' onClick={handleDelete}>
+              Delete User Account
+            </button>
+            <LogoutButton />
           </div>
           <NewsletterSignUp />
         </>

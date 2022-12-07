@@ -24,8 +24,8 @@ const authSlice = createSlice({
       state.user = null;
       toast.error('Logged out');
       localStorage.removeItem('token');
-    }
-  }
+    },
+  },
 });
 
 // Action creators

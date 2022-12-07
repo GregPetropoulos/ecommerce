@@ -18,7 +18,14 @@ export const authService = api.injectEndpoints({
         body: { ...userNew }
       })
     }),
+    deleteUser: builder.mutation({
+      query:(id)=>({
+        url:API_URL+id,
+        method: 'DELETE',
+        body: {id}
+      })
+    })
   })
 });
 
-export const { useLoginMutation, useRegisterMutation } = authService;
+export const { useLoginMutation, useRegisterMutation,useDeleteUserMutation } = authService;

@@ -4,7 +4,7 @@ const Cart = require('../models/cartModel');
 const User = require('../models/userModel');
 
 // * @desc Get user's cart
-// * @route /api/cart
+// * @route GET /api/cart
 // * access Private
 const getCart = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user.id);
@@ -23,6 +23,16 @@ const getCart = asyncHandler(async (req, res) => {
   }
   res.status(200).json(cart);
 });
+
+// * @desc POST create a user's cart
+// * @route /api/cart
+// * access Private
+const createCart=()=>{
+    console.log('createcartfunc')
+}
+
+
 module.exports = {
-  getCart
+  getCart,
+  createCart
 };

@@ -144,6 +144,7 @@ const dispatch= useDispatch()
 
 Register.propTypes = {
   // register: PropTypes.func.isRequired,
+  initialUser:PropTypes.objectOf(PropTypes.string)
   // isAuthenticated: PropTypes.bool
 };
 export default Register;
