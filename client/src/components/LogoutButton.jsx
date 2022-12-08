@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { logOut } from '../features/auth/authSlice';
 
-const LogoutButton = () => {
+const LogoutButton = ({ style }) => {
+  //example of passed prop to change styles style={['btn btn-info']}
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -14,7 +15,11 @@ const LogoutButton = () => {
 
   return (
     <button
-      className='btn btn-outline bg-secondary mt-4'
+      className={
+        !!style && style.length > 0
+          ? [...style]
+          : 'btn  btn-xs btn-outline btn-error mt-4'
+      }
       onClick={handleLogout}>
       Logout
     </button>

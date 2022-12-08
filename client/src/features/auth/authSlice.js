@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import type { PayloadAction } from '@reduxjs/toolkit';
-// import type { User } from '../../app/services/auth';
-// import type { RootState } from '../../app/store';
 import { toast } from 'react-toastify';
 
+//The local storage allows the user to not be logged out when refreshing safely
+const user = JSON.parse(localStorage.getItem('user'));
 const authState = {
-  user: null, //object
+  user: user ? user : null, //object
   token: null //string
 };
 
@@ -17,6 +16,7 @@ const authSlice = createSlice({
       const { token } = action.payload;
       state.token = token;
       state.user = action.payload;
+      localStorage.setItem('token', JSON.stringify(state.token));
       toast.success(`Yes!! ${state.user.firstName} you are logged in`);
     },
     logOut: (state, action) => {
@@ -24,8 +24,9 @@ const authSlice = createSlice({
       state.user = null;
       toast.error('Logged out');
       localStorage.removeItem('token');
-    },
-  },
+      localStorage.clear();
+    }
+  }
 });
 
 // Action creators
