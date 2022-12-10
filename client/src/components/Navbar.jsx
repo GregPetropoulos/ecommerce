@@ -1,11 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Settings from './Setting';
 import SearchBar from './SearchBar';
 import Header from './Header';
 import menuWoman from '../assets/images/women/menu-woman.jpg';
-import logo from '../assets/images/logo/moda-logo.png'
-import mockLogo from '../assets/images/logo/mock-logo.png'
+import logo from '../assets/images/logo/moda-logo.png';
+import mockLogo from '../assets/images/logo/mock-logo.png';
+
+//AUTH
+import { useAuth } from '../hooks/useAuth';
 
 import {
   shopAllLinks,
@@ -18,6 +21,8 @@ import {
 } from '../data/links';
 
 const Navbar = () => {
+  const { user } = useAuth();
+
   return (
     <>
       {/* <Header/> */}
@@ -107,8 +112,8 @@ const Navbar = () => {
           <Link
             to='/'
             // className='btn btn-ghost normal-case  font-bold text-2xl text-red-700 tracking-widest rounded-full'>
-            className='btn btn-ghost btn-2xl'> 
-            <img className='w-full h-full'src={mockLogo} alt="logo" />
+            className='btn btn-ghost btn-2xl'>
+            <img className='w-full h-full' src={mockLogo} alt='logo' />
           </Link>
         </div>
         <div className='navbar-center hidden md:flex'>
@@ -279,10 +284,8 @@ const Navbar = () => {
           <div className=' flex justify-center border-l-2 px-2 text-xsm'>
             <SearchBar />
           </div>
+
           <div className='flex flex-row justify-evenly align-middle'>
-            {/* <SearchBar /> */}
-            {/* <div className='form-control flex justify-center w-full m-3'>
-            </div> */}
             <div className='dropdown dropdown-end '>
               <label
                 tabIndex={0}
@@ -313,9 +316,18 @@ const Navbar = () => {
                   <span className='font-bold '>8 Items</span>
                   <span className='text-info'>Subtotal: $999</span>
                   <div className='card-actions'>
-                    <button className='btn btn-primary btn-block'>
-                      View cart
-                    </button>
+                    {user ? (
+                      <Link to='/cart' className='btn btn-primary btn-block'>
+                        View cart
+                      </Link>
+                    ) : (
+                      <Link
+                        to='/login'
+                        className='tooltip tooltip-accent btn btn-primary btn-block p-4 text-center'
+                        data-tip='Login to see your cart'>
+                        Login
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>

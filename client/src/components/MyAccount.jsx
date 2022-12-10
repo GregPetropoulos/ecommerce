@@ -16,7 +16,7 @@ const MyAccount = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-  const { user } = useAuth();
+  const { user, } = useAuth();
   const [deleteUser, { isSuccess, isError, isLoading, error }] =
     useDeleteUserMutation();
 
@@ -45,7 +45,7 @@ const MyAccount = () => {
   if (isError) return <PageError error={error} />;
   return (
     <>
-      {user ? (
+      {user? (
         <>
           <div className='flex flex-col mx-4 align-middle '>
             {/* <div className='flex flex-row w-full justify-center'> */}

@@ -16,6 +16,7 @@ const baseQuery = fetchBaseQuery({
   }
 });
 
+//IF A LOCAL STORAGE IS NOT USED THIS IS RTK APPROACH TO A REFRESH ROUTE ON THE BACK END (NOT IMPLEMENTED CURRENTLY)
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args, api, extraOptions);
   // My backend will send a 403 forbidden for token expired else will sent 401 unathorized

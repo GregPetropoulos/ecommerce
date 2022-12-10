@@ -17,7 +17,8 @@ import Success from './pages/Success';
 import Cancel from './pages/Cancel';
 import { PrivateOutlet } from './utils/PrivateOutlet';
 import RequireAuth from './features/auth/RequireAuth';
-import Welcome from './features/auth/Welcome';
+// import Welcome from './features/auth/Welcome';
+import Cart from './components/Cart';
 
 //TOAST
 import { ToastContainer, toast } from 'react-toastify';
@@ -38,8 +39,9 @@ function App() {
 
           {/* Protected Routes */}
           <Route element={<RequireAuth />}>
-            <Route path='welcome' element={<Welcome />} />
+            {/* <Route path='welcome' element={<Welcome />} /> */}
             <Route path='myaccount' element={<MyAccount />} />
+            <Route path='cart' element={<Cart/>}/>
             <Route path='success' element={<Success />} />
             <Route path='cancel' element={<Cancel />} />
           </Route>
