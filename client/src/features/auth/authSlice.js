@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+// ! TWO WAYS FOR PERSISTENT USER ON RELOADING THE PAGE. MUST STORE THE USER IN LOCAL STORAGE OR BUILD OUT REFRESH TOKEN WITH BACKEND SEE DG
+
 
 //The local storage allows the user to not be logged out when refreshing safely
 const user = JSON.parse(localStorage.getItem('user'));

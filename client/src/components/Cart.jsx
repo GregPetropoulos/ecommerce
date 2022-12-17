@@ -5,10 +5,10 @@ import React from 'react';
 const Cart = () => {
   return (
     <>
-      <div className='flex flex-col text-center text-primary py-6 text-4xl bg-secondary'>
+      <div className='flex flex-col text-center text-primary-content py-6 text-4xl bg-primary'>
         <h2>Users Shopping Cart</h2>
       </div>
-      <div className='flex flex-row flex-wrap w-full bg-secondary justify-center  md:flex-nowrap sm:flex-row-reverse'>
+      <div className='flex flex-row flex-wrap w-full bg-primary justify-center  md:flex-nowrap sm:flex-row-reverse'>
         {/* // summary top and right side */}
         <div className='  flex flex-col p-6  rounded-xl sm:my-4 sm:mr-4 w-full max-w-md bg-secondary-focus'>
           <h1 className='text-center text-3xl text-primary'>Summary</h1>
@@ -61,7 +61,7 @@ const Cart = () => {
                 alt={''}
               />
             </figure>
-            <div className=' card-body bg-accent'>
+            <div className=' card-body bg-primary-content'>
               <h4 className='card-title justify-center text-primary text-2xl'>
                 Watch
               </h4>

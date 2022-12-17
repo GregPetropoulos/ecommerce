@@ -23,6 +23,7 @@ import Cart from './components/Cart';
 //TOAST
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Women from './pages/Women';
 
 function App() {
   return (
@@ -34,6 +35,9 @@ function App() {
           <Route index element={<Home />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
+          <Route path='women' element={<Women />} />
+          <Route path='men' element={<Blog1 />} />
+          <Route path='gear' element={<Blog1 />} />
           <Route path='blog1' element={<Blog1 />} />
           <Route path='blog2' element={<Blog2 />} />
 
