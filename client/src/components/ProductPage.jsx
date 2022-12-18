@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Accordion from './Accordion';
 import { products } from '../data/products';
 
@@ -14,10 +15,12 @@ const ProductPage = () => {
               <img src={product.img} alt={product.name} />
             </figure>
             <div className='card-body'>
-              <h2 className='card-title'>{product.name}</h2>
-              <p>{product.name}</p>
+              <Link to={`/product/${product._id}`} alt=''>
+                <h2 className='card-title'>{product.name}</h2>
+              </Link>
               <p>{product.description}</p>
               <p>Price ${product.newPrice}</p>
+              {product.rating} from {product.numReviews} Reviews
               <p>In stock {product.countInStock}</p>
               <div className='card-actions justify-center'>
                 <button className='btn btn-xs btn-primary'>Buy Now</button>
