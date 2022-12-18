@@ -8,7 +8,8 @@ const Accordion = () => {
   const [isColor, setIsColor] = useState(false);
 
   return (
-    <div className='flex flex-col border-bg-primary-content border-2 w-1/2 p-4 my-4'>
+    <div className='flex flex-row justify-center w-full'>
+    <div className='flex flex-col w-full sm:w-1/2  border-bg-primary-content border-2  p-4 my-4'>
       <h4 className='  text-center text-neutral uppercase'>
         <strong>Shopping Options</strong>
       </h4>
@@ -108,6 +109,7 @@ const Accordion = () => {
         </button>
       </div>
       {isFormat && <div>HELLOFORMAT</div>}
+    </div>
     </div>
   );
 };
