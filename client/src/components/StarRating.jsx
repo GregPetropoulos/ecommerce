@@ -1,15 +1,24 @@
-import React from 'react'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { FaStar } from 'react-icons/fa';
+import { FaStarHalf } from 'react-icons/fa';
+import { FaRegStar } from 'react-icons/fa';
 
-function StarRating() {
+const StarRating = ({ value, text }) => {
   return (
-<div className="rating">
-  <input type="radio" name="rating-1" className="mask mask-star" />
-  <input type="radio" name="rating-1" className="mask mask-star" checked />
-  <input type="radio" name="rating-1" className="mask mask-star" />
-  <input type="radio" name="rating-1" className="mask mask-star" />
-  <input type="radio" name="rating-1" className="mask mask-star" />
-</div>
-  )
-}
+    <div className='rating'>
+      {value >= 1 ? <FaStar /> : value >= 0.5 ? <FaStarHalf /> : <FaRegStar />}
+      {value >= 2 ? <FaStar /> : value >= 1.5 ? <FaStarHalf /> : <FaRegStar />}
+      {value >= 3 ? <FaStar /> : value >= 2.5 ? <FaStarHalf /> : <FaRegStar />}
+      {value >= 4 ? <FaStar /> : value >= 3.5 ? <FaStarHalf /> : <FaRegStar />}
+      {value >= 5 ? <FaStar /> : value >= 4.5 ? <FaStarHalf /> : <FaRegStar />}
+      <span className='ml-2'>{text ? text : ''}</span>
+    </div>
+  );
+};
 
-export default StarRating
+StarRating.propTypes = {
+  value: PropTypes.number.isRequired,
+  text: PropTypes.string.isRequired
+};
+export default StarRating;

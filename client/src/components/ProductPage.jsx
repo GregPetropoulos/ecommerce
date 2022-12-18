@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Accordion from './Accordion';
 import { products } from '../data/products';
+import StarRating from './StarRating';
 
 const ProductPage = () => {
   return (
@@ -13,9 +14,9 @@ const ProductPage = () => {
         {products.map((product) => (
           <div className='card card-compact w-96 bg-base-100 shadow-xl m-3'>
             <Link to={`/product/${product._id}`} alt=''>
-            <figure>
-              <img src={product.img} alt={product.name} />
-            </figure>
+              <figure>
+                <img src={product.img} alt={product.name} />
+              </figure>
             </Link>
             <div className='card-body'>
               <Link to={`/product/${product._id}`} alt=''>
@@ -23,7 +24,10 @@ const ProductPage = () => {
               </Link>
               <p>{product.description}</p>
               <p>Price ${product.newPrice}</p>
-              {product.rating} from {product.numReviews} Reviews
+              <StarRating
+                value={product.rating}
+                text={`${product.numReviews} reviews`}
+              />
               <p>In stock {product.countInStock}</p>
               <div className='card-actions justify-center'>
                 <button className='btn btn-xs btn-primary'>Buy Now</button>

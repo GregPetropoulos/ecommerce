@@ -34,7 +34,7 @@ const ArrivalCards = ({ data }) => {
               <div className=''>
                 <p>{item.name}</p>
                 <p>${item.newPrice}</p>
-                <StarRating />
+                <StarRating value={item.rating} text={`${item.numReviews} reviews`} />
               </div>
             </div>
             <div className=' flex flex-col justify-center m-4'>
