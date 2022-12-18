@@ -8,12 +8,15 @@ const ProductPage = () => {
     <div className='flex flex-col w-full bg-primary align-middle justify-center'>
       <h1 className='text-4xl text-center text-neutral w-full'>Women</h1>
       <Accordion />
+      {/* TODO MAKE THIS A CARD COMPONENT */}
       <div className='flex flex-row justify-center align-middle flex-wrap'>
         {products.map((product) => (
           <div className='card card-compact w-96 bg-base-100 shadow-xl m-3'>
+            <Link to={`/product/${product._id}`} alt=''>
             <figure>
               <img src={product.img} alt={product.name} />
             </figure>
+            </Link>
             <div className='card-body'>
               <Link to={`/product/${product._id}`} alt=''>
                 <h2 className='card-title'>{product.name}</h2>
