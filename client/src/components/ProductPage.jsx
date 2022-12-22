@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Accordion from './Accordion';
-import { products } from '../data/products';
 import StarRating from './StarRating';
 
-const ProductPage = () => {
+const ProductPage = ({product}) => {
+
   return (
-    <div className='flex flex-col w-full bg-primary align-middle justify-center'>
-      <h1 className='text-4xl text-center text-neutral w-full'>Women</h1>
-      <Accordion />
+    <>
       {/* TODO MAKE THIS A CARD COMPONENT */}
-      <div className='flex flex-row justify-center align-middle flex-wrap'>
-        {products.map((product) => (
-          <div className='card card-compact w-96 bg-base-100 shadow-xl m-3'>
+      <div className='flex flex-col  flex-wrap'>
+      {!!product && product?.category?.toLowerCase() === 'tops'?<h2 className='text-4xl text-center'>Tops</h2>:''}
+                 {!!product && product?.category?.toLowerCase() === 'bottoms'?<h2 className='text-4xl text-center'>Bottoms</h2>:''}
+                 {!!product && product?.category?.toLowerCase() === 'dresses'?<h2 className='text-4xl text-center'>Dresses</h2>:''}
+          <div className='card card-compact bg-base-100 shadow-xl m-3'>
             <Link to={`/product/${product._id}`} alt=''>
               <figure>
                 <img src={product.img} alt={product.name} />
               </figure>
             </Link>
             <div className='card-body'>
-              <Link to={`/product/${product._id}`} alt=''>
+              <Link to={`/product/${product._id}`} alt={product.name}>
                 <h2 className='card-title'>{product.name}</h2>
               </Link>
               <p>{product.description}</p>
@@ -27,18 +27,21 @@ const ProductPage = () => {
               <StarRating
                 value={product.rating}
                 text={`${product.numReviews} reviews`}
-              />
+                />
               <p>In stock {product.countInStock}</p>
               <div className='card-actions justify-center'>
                 <button className='btn btn-xs btn-primary'>Buy Now</button>
                 <button className='btn  btn-xs btn-primary'>Add to Cart</button>
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+          {/* </div> */}
+      </div> 
     </div>
+                </>
+      
   );
 };
-
+ProductPage.propTypes={
+  product:PropTypes.object
+}
 export default ProductPage;

@@ -24,6 +24,7 @@ import Cart from './components/Cart';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Women from './pages/Women';
+import ProductDetailPage from './pages/ProductDetailPage';
 
 function App() {
   return (
@@ -35,7 +36,12 @@ function App() {
           <Route index element={<Home />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
-          <Route path='women' element={<Women />} />
+
+          {/* Womens nested routes */}
+          <Route path='women' element={<Layout />}>
+            <Route index element={<Women/>}/>
+            <Route path='product/:id' element={<ProductDetailPage />} />
+          </Route>
           <Route path='men' element={<Blog1 />} />
           <Route path='gear' element={<Blog1 />} />
           <Route path='blog1' element={<Blog1 />} />
@@ -45,7 +51,7 @@ function App() {
           <Route element={<RequireAuth />}>
             {/* <Route path='welcome' element={<Welcome />} /> */}
             <Route path='myaccount' element={<MyAccount />} />
-            <Route path='cart' element={<Cart/>}/>
+            <Route path='cart' element={<Cart />} />
             <Route path='success' element={<Success />} />
             <Route path='cancel' element={<Cancel />} />
           </Route>
