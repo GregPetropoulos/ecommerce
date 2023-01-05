@@ -7,9 +7,15 @@ import NewArrivals from '../components/NewArrivals';
 import Blogs from '../components/Blogs';
 import BrandFooter from '../components/BrandFooter';
 import NewsletterSignUp from '../components/NewsletterSignUp';
+import { Link} from 'react-router-dom';
 
 const Home = () => {
   return (
+    <>
+    {/* <Link to='/women' className='btn font-bold text-lg'>
+    WOMEN</Link> */}
+    <Link to='/product' className='btn font-bold text-lg'>
+    product</Link>
     <div className=' bg-primary'>
       <Carousel />
       <SecondaryFooter />
@@ -22,6 +28,7 @@ const Home = () => {
       <BrandFooter/>
       <NewsletterSignUp/>
     </div>
+    </>
   );
 };
 

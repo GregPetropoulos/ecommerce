@@ -64,7 +64,7 @@ const Navbar = () => {
                 <ul className='p-2 invisible sm:visible'>
                   {shopAllLinks.map((item, idx) => (
                     <li key={idx}>
-                      <Link to={item.route}>{item.text}</Link>
+                      <Link to={item.route} key={idx}>{item.text}</Link>
                     </li>
                   ))}
                 </ul>
@@ -120,7 +120,7 @@ const Navbar = () => {
           {/* DESKTOP  */}
           <ul className='menu menu-horizontal p-0'>
             <li tabIndex={0} className=''>
-              <Link to='/women' className='font-bold text-lg'>
+              <Link to='women' className='font-bold text-lg'>
                 WOMEN
                 <svg
                   className='fill-current'

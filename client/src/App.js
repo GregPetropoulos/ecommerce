@@ -1,5 +1,10 @@
 import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet
+} from 'react-router-dom';
 
 //PUBLIC
 import Layout from './components/Layout';
@@ -25,6 +30,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Women from './pages/Women';
 import ProductDetailPage from './pages/ProductDetailPage';
+import { products } from './data/products';
+import ProductPage from './components/ProductPage';
 
 function App() {
   return (
@@ -38,9 +45,11 @@ function App() {
           <Route path='register' element={<Register />} />
 
           {/* Womens nested routes */}
-          <Route path='women' element={<Layout />}>
-            <Route index element={<Women/>}/>
-            <Route path='product/:id' element={<ProductDetailPage />} />
+          <Route path='women' element={<Women products={products} />}>
+            <Route
+              path='product/:id'
+              element={<ProductDetailPage products={products} />}
+            />
           </Route>
           <Route path='men' element={<Blog1 />} />
           <Route path='gear' element={<Blog1 />} />

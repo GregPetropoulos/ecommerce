@@ -1,17 +1,16 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import StarRating from '../components/StarRating';
-import { products } from '../data/products';
 
-const ProductDetailPage = ({}) => {
-  const params = useParams();
+const ProductDetailPage = ({ products }) => {
+  const { id } = useParams();
   //LOCATE THE ID OF THE PRODUCT VIA PARAMS
-  const product = products.find((p) => p._id === params.id);
-  console.log(product);
-//!STOPPED HERE NEED TO BETTER FORMAT UI AND GET THIS TO SHOW UP
+
+  const product = products.find((p) => p._id.toString() === id);
+  console.log('product', product);
   return (
     <>
-      <Link to='/' className='btn btn-xs btn-primary my-3'>
+      <Link to='/women' className='btn btn-xs btn-primary my-3'>
         Go Back
       </Link>
       <div className='flex flex-row'>
@@ -35,11 +34,25 @@ const ProductDetailPage = ({}) => {
           <div className='card w-96 bg-primary text-primary-content'>
             <div className='card-body'>
               <h2 className='card-title'>{product.name}</h2>
-              <p>Price: <strong>${product.price}</strong></p>
-              <p>Status: <strong>${product.countInStock>0?'In Stock':'Out of Stock'}</strong></p>
-              <p>Price: <strong>${product.price}</strong></p>
+              <p>
+                Price: <strong>${product.price}</strong>
+              </p>
+              <p>
+                Status:{' '}
+                <strong>
+                  ${product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
+                </strong>
+              </p>
+              <p>
+                Price: <strong>${product.price}</strong>
+              </p>
               <div className='card-actions justify-end'>
-                <button type='button'className='btn' disabled={product.countInStock===0}>Add To Cart</button>
+                <button
+                  type='button'
+                  className='btn'
+                  disabled={product.countInStock === 0}>
+                  Add To Cart
+                </button>
               </div>
             </div>
           </div>
